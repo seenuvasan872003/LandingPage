@@ -132,7 +132,7 @@ export default function Header() {
                       navigate(item.path);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`text-sm font-medium transition-colors hover:text-[#25D366] ${
+                    className={` z-50 text-sm font-medium transition-colors hover:text-[#25D366] ${
                       location.pathname === item.path ? 'text-[#25D366]' : 'text-white'
                     }`}
                   >

@@ -5,7 +5,7 @@ import { exampleImages } from "../../utils/demo-images";
 import { stagger, useAnimate, motion } from "framer-motion"; 
 import Floating, { FloatingElement } from "./parallax-floating";
 
-const Preview = () => {
+const HeroSection = () => {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
@@ -15,22 +15,22 @@ const Preview = () => {
   return (
     <div className="flex  h-dvh justify-center items-center bg-black overflow-hidden" ref={scope}>
       <motion.div
-        className="z-50 text-center space-y-4 items-center flex flex-col"
+        className="z-20 text-center space-y-4 items-center flex flex-col"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.88, delay: 1.5 }}
       >
-        <p className="text-5xl md:text-7xl -z-20 max-w-[750px] text-center text-white font-calendas italic">
+        <p className="text-5xl md:text-7xl -z-20 max-w-[750px] text-center text-white font-calendas italic ">
           Running an online store? Let our WhatsApp API handle the hard stuff!
         </p>
-        <div className="flex gap-4 bg-black p-4">
+        <div className="flex gap-4  p-4">
           
-          <button className="px-6 py-2 border border-white text-white rounded-full hover:bg-white hover:text-black transition">
+          <button className="px-6 py-2 border border-white text-white rounded-full hover:bg-white hover:text-black transition z-10">
             Book a demo
           </button>
 
          
-          <button className="px-6 py-2 border bg-white text-black rounded-full hover:bg-black hover:text-white hover:border-white transition">
+          <button className="px-6 py-2 z-10 border bg-white text-black rounded-full hover:bg-black hover:text-white hover:border-white transition">
             Start for free
           </button>
         </div>
@@ -40,10 +40,10 @@ const Preview = () => {
         {exampleImages.map((image, index) => {
           const positions = [
             { depth: 0.5, className: "top-[8%] left-[11%]" },
-            { depth: 1, className: "top-[10%] left-[32%]" },
-            { depth: 2, className: "top-[2%] left-[53%]" },
-            { depth: 1, className: "top-[0%] left-[83%]" },
-            { depth: 1, className: "top-[40%] left-[2%]" },
+            { depth: 1, className: "top-[-1%] left-[52%]" },
+            { depth: 2, className: "top-[2%] left-[83%]" },
+            { depth: 1, className: "top-[35%] left-[83%] hidden md:block" },
+            { depth: 1, className: "top-[40%] left-[2%] hidden md:block" },
             { depth: 2, className: "top-[70%] left-[77%]" },
             { depth: 4, className: "top-[73%] left-[15%]" },
             { depth: 1, className: "top-[80%] left-[50%]" },
@@ -67,4 +67,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default HeroSection;
