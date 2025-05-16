@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const TestimonialCard = ({
   quote,
   name,
-  position,
+  company,
   profileImage,
   rating,
   index,
@@ -49,7 +49,7 @@ const TestimonialCard = ({
         />
         <div>
           <h4 className="font-medium text-white">{name}</h4>
-          <p className="text-gray-400 text-sm">{position}</p>
+          <p className="text-gray-400 text-sm">{company}</p>
         </div>
       </motion.div>
     </motion.div>

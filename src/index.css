@@ -25,3 +25,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Chrome, Safari, Edge */
+.custom-date-input::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1); /* makes it white */
+  cursor: pointer;
+}
+
+/* Firefox */
+.custom-date-input::-moz-focus-inner {
+  color: white;
+}
+
+/* Optional: remove default background */
+.custom-date-input::-webkit-inner-spin-button,
+.custom-date-input::-webkit-clear-button {
+  display: none;
+}

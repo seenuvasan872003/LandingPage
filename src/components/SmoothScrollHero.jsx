@@ -7,8 +7,6 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { SiSpacex } from "react-icons/si";
-import { FiArrowRight, FiMapPin } from "react-icons/fi";
 import { useRef,useState } from "react";
 
 export const SmoothScrollHero = () => {
@@ -75,7 +73,7 @@ const CenterImage = () => {
         backgroundSize,
         opacity,
         backgroundImage:
-          "url(https://sdmntprwestus.oaiusercontent.com/files/00000000-7288-6230-8a7c-27bf3a6a7c0a/raw?se=2025-05-01T17%3A46%3A15Z&sp=r&sv=2024-08-04&sr=b&scid=61849ae1-d8e3-5928-be09-01b607880396&skoid=d958ec58-d47c-4d2f-a9f2-7f3e03fdcf72&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-01T03%3A45%3A05Z&ske=2025-05-02T03%3A45%3A05Z&sks=b&skv=2024-08-04&sig=cwfgdYfZjn6YGcWTqnBiAszfZy3zy4FHI9txOivgTOE%3D)",
+          "url(https://i.ibb.co/SX0JHPK9/Chat-GPT-Image-May-3-2025-09-50-13-AM.png)",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
@@ -200,7 +198,7 @@ const Schedule = () => {
         transition={{ ease: "easeInOut", duration: 0.75 }}
         className="mb-20 text-4xl font-black uppercase text-zinc-50"
       >
-        WhatsApp API Features
+       GoWhats Features
       </motion.h1>
       <ScheduleItem 
         title="Green Tick Verification" 

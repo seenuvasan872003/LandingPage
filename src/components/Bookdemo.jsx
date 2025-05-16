@@ -1,0 +1,413 @@
+import React, { useState, useEffect } from 'react';
+import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+const BookDemo = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    companyName: '',
+    message: '',
+    dateTime: '',
+  });
+
+  const [date, setDate] = useState('');
+  const [hours, setHours] = useState('12');
+  const [minutes, setMinutes] = useState('00');
+  const [period, setPeriod] = useState('AM');
+  const [focused, setFocused] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ status: '', message: '' });
+
+  // Initialize EmailJS on component mount
+  useEffect(() => {
+    
+    emailjs.init("1v191cwFPow0zxRlB");
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFocus = (name) => {
+    setFocused(name);
+  };
+
+  const handleBlur = () => {
+    setFocused(null);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    // Prepare the date time string
+    const dateTime = `${date} ${hours}:${minutes} ${period}`;
+    
+    // Prepare email template parameters
+    const templateParams = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      companyName: formData.companyName,
+      message: formData.message,
+      dateTime: dateTime,
+      to_email: formData.email, // To send confirmation to user
+    };
+
+    try {
+      // Send notification to your email
+      await emailjs.send(
+        'service_wu399ir', // replace with your EmailJS service ID
+        'template_mo42pru', // replace with your template ID for admin notification
+        templateParams
+      );
+      
+      // Send confirmation to user
+      await emailjs.send(
+        'service_wu399ir', // replace with your EmailJS service ID
+        'template_wet5tpi', // replace with your template ID for user confirmation
+        templateParams
+      );
+      
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        companyName: '',
+        message: '',
+        dateTime: '',
+      });
+      setDate('');
+      setHours('12');
+      setMinutes('00');
+      setPeriod('AM');
+      
+      // Show success message
+      setSubmitStatus({
+        status: 'success',
+        message: 'Your message has been sent successfully! Check your email for confirmation.'
+      });
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setSubmitStatus({
+        status: 'error',
+        message: 'Failed to send your message. Please try again later.'
+      });
+    } finally {
+      setLoading(false);
+      
+      // Clear status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus({ status: '', message: '' });
+      }, 5000);
+    }
+  };
+
+  return (
+    <div className="container bg-black mx-auto px-4 py-16 relative z-10">
+      {/* Header Section */}
+      <div className="text-center mb-16">
+        <h1 className="text-6xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-4">
+          Let's Talk!
+        </h1>
+        <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+          Have a question or idea? Drop us a message and we'll get back to you!
+        </p>
+      </div>
+
+      <div className="flex flex-col lg:flex-row items-start justify-between gap-16">
+        {/* Contact Info Section */}
+        <div className="lg:w-1/2 w-full animate-fade-in p-10 bg-black/30 backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.07)]">
+          <h2 className="text-3xl font-bold text-white mb-8">Contact Information</h2>
+          <div className="space-y-8">
+            <div className="flex items-center group">
+              <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mr-4 group-hover:bg-emerald-500/20 transition-all duration-300">
+                <Phone className="text-emerald-400" size={20} />
+              </div>
+              <div>
+                <h3 className="text-white text-lg font-medium">+91 85240 89733</h3>
+                <p className="text-gray-400">Call or WhatsApp</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center group">
+              <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mr-4 group-hover:bg-emerald-500/20 transition-all duration-300">
+                <Mail className="text-emerald-400" size={20} />
+              </div>
+              <div>
+                <h3 className="text-white text-lg font-medium">techvaseegrah@gmail.com</h3>
+                <p className="text-gray-400">Email Anytime</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center group">
+              <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mr-4 group-hover:bg-emerald-500/20 transition-all duration-300">
+                <MapPin className="text-emerald-400" size={20} />
+              </div>
+              <div>
+                <h3 className="text-white text-lg font-medium">Thanjavur, Tamil Nadu</h3>
+                <p className="text-gray-400">Our HQ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Form Section */}
+        <div className="lg:w-1/2 w-full animate-slide-up">
+          <div className="w-full max-w-xl bg-black/30 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.07)]">
+            <h2 className="text-3xl font-bold text-white mb-6">Get in Touch</h2>
+            <p className="text-gray-300 mb-8">We're happy to hear from you.</p>
+            
+            {/* Status Message */}
+            {submitStatus.status && (
+              <div className={`mb-6 p-4 rounded-lg ${submitStatus.status === 'success' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}`}>
+                {submitStatus.message}
+              </div>
+            )}
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="relative group">
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus('firstName')}
+                    onBlur={handleBlur}
+                    className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                    placeholder=" "
+                    required
+                  />
+                  <label 
+                    htmlFor="firstName" 
+                    className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
+                      formData.firstName || focused === 'firstName' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                    }`}
+                  >
+                    First Name
+                  </label>
+                </div>
+                
+                <div className="relative group">
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus('lastName')}
+                    onBlur={handleBlur}
+                    className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                    placeholder=" "
+                    required
+                  />
+                  <label 
+                    htmlFor="lastName" 
+                    className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
+                      formData.lastName || focused === 'lastName' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                    }`}
+                  >
+                    Last Name
+                  </label>
+                </div>
+              </div>
+
+              <div className="relative group">
+                <input
+                  type="text"
+                  name="companyName"
+                  id="companyName"
+                  value={formData.companyName}
+                  onChange={handleChange}
+                  onFocus={() => handleFocus('companyName')}
+                  onBlur={handleBlur}
+                  className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                  placeholder=" "
+                />
+                <label 
+                  htmlFor="companyName" 
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
+                    formData.companyName || focused === 'companyName' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                  }`}
+                >
+                  Company Name
+                </label>
+              </div>
+
+              <div className="relative group">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  onFocus={() => handleFocus('email')}
+                  onBlur={handleBlur}
+                  className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                  placeholder=" "
+                  required
+                />
+                <label 
+                  htmlFor="email" 
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
+                    formData.email || focused === 'email' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                  }`}
+                >
+                  Email
+                </label>
+              </div>
+
+              <div className="relative group">
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  onFocus={() => handleFocus('phone')}
+                  onBlur={handleBlur}
+                  className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                  placeholder=" "
+                />
+                <label 
+                  htmlFor="phone" 
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
+                    formData.phone || focused === 'phone' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                  }`}
+                >
+                  Phone
+                </label>
+              </div>
+
+              {/* Date Time Picker */}
+              <div className="space-y-4">
+                <div className="relative group">
+                  <input
+                    type="date"
+                    id="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    onFocus={() => handleFocus('date')}
+                    onBlur={handleBlur}
+                    className="custom-date-input w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                    required
+                  />
+                  <label className="absolute text-xs -top-2.5 left-4 bg-black px-1 text-gray-400">
+                    Date
+                  </label>
+                </div>
+
+                <div className="grid grid-cols-12 gap-4 items-center">
+                  <div className="col-span-3 relative">
+                    <select
+                      id="hours"
+                      value={hours}
+                      onChange={(e) => setHours(e.target.value)}
+                      className="w-full bg-white/5 border border-gray-700 rounded-lg px-3 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300 appearance-none"
+                    >
+                      {Array.from({ length: 12 }, (_, i) => i + 1).map(hour => (
+                        <option className='text-black' key={hour} value={hour < 10 ? `0${hour}` : hour.toString()}>
+                          {hour < 10 ? `0${hour}` : hour}
+                        </option>
+                      ))}
+                    </select>
+                    <label className="absolute text-xs -top-2.5 left-4 bg-black px-1 text-gray-400">
+                      Hour
+                    </label>
+                  </div>
+
+                  <div className="col-span-1 flex justify-center text-gray-400 text-xl">
+                    :
+                  </div>
+
+                  <div className="col-span-3 relative">
+                    <select
+                      id="minutes"
+                      value={minutes}
+                      onChange={(e) => setMinutes(e.target.value)}
+                      className="w-full bg-white/5 border border-gray-700 rounded-lg px-3 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300 appearance-none"
+                    >
+                      {Array.from({ length: 60 }, (_, i) => i).map(minute => (
+                        <option className='text-black' key={minute} value={minute < 10 ? `0${minute}` : minute.toString()}>
+                          {minute < 10 ? `0${minute}` : minute}
+                        </option>
+                      ))}
+                    </select>
+                    <label className="absolute text-xs -top-2.5 left-4 bg-black px-1 text-gray-400">
+                      Min
+                    </label>
+                  </div>
+
+                  <div className="col-span-5 relative flex">
+                    <div 
+                      className={`flex-1 text-center py-2 rounded-l-lg cursor-pointer border border-r-0 border-gray-700 transition-all ${period === 'AM' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/5 text-gray-400'}`}
+                      onClick={() => setPeriod('AM')}
+                    >
+                      AM
+                    </div>
+                    <div 
+                      className={`flex-1 text-center py-2 rounded-r-lg cursor-pointer border border-gray-700 transition-all ${period === 'PM' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/5 text-gray-400'}`}
+                      onClick={() => setPeriod('PM')}
+                    >
+                      PM
+                    </div>
+                    <Clock size={16} className="absolute right-3 top-3 text-gray-400" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative group">
+                <textarea
+                  name="message"
+                  id="message"
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  onFocus={() => handleFocus('message')}
+                  onBlur={handleBlur}
+                  className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300 resize-none"
+                  placeholder=" "
+                  required
+                />
+                <label 
+                  htmlFor="message" 
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
+                    formData.message || focused === 'message' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                  }`}
+                >
+                  Message
+                </label>
+              </div>
+
+              <button 
+                type="submit" 
+                className="w-full py-3 px-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 flex items-center justify-center space-x-2 group"
+                disabled={loading}
+              >
+                {loading ? (
+                  <span>Sending...</span>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Send size={18} className="inline-block transition-transform duration-300 group-hover:translate-x-1" />
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BookDemo;

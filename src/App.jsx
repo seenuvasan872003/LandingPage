@@ -4,6 +4,7 @@ import './App.css'
 import Header from './components/Header.jsx';
 import Homepage from './pages/Homepage.jsx';
 import Footer from './components/Footer.jsx';
+import BookDemo from './components/Bookdemo.jsx';
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
 
 
       <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-black">
         {/* Include the Header component for navigation */}
         <Header />
         {/* Main content area */}
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             {/* Define the default route for GoWhats component */}
             <Route path="/" element={<Homepage />} />
+            <Route path="/book-demo" element={<BookDemo />} />
               
             
             {/* <Route path="/contact" element={<Contact />} />

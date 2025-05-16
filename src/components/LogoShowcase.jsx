@@ -6,10 +6,10 @@ const LogoShowcase = () => {
   const Logo = ({ icon, text, color = "text-gray-400" }) => (
     <div className="mx-8 transition-all duration-300 hover:scale-110 cursor-pointer group">
       <div className="flex items-center gap-2">
-        <div className={`${color} group-hover:text-blue-400 transition-colors duration-300`}>
+        <div className={`${color} group-hover:text-green-400 transition-colors duration-300`}>
           {icon}
         </div>
-        <span className="font-bold text-xl text-gray-300 group-hover:text-blue-400 transition-colors duration-300">
+        <span className="font-bold text-xl text-gray-300 group-hover:text-green-400 transition-colors duration-300">
           {text}
         </span>
       </div>
@@ -20,7 +20,7 @@ const LogoShowcase = () => {
   const TopSection = () => (
     <div className="flex justify-center items-center gap-8 mb-16">
       <div className="flex items-center gap-2">
-        <div className="text-blue-400">
+        <div className="text-green-400">
           <Activity size={24} className="stroke-[3]" />
         </div>
         <div className="font-bold text-gray-200">
@@ -66,7 +66,7 @@ const LogoShowcase = () => {
   ];
 
   return (
-    <div className="py-16 overflow-hidden bg-black">
+    <div className="py-16 overflow-hidden bg-black my-2.5 ">
       <div className="container mx-auto mb-12 px-4 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-200 mb-1">
           Trusted by 5000+ brands across 40+ countries
