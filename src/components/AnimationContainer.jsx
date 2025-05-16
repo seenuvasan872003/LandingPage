@@ -2,6 +2,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from 'react';
 import { MoreVertical, Camera } from 'lucide-react';
+// Import your local video
+// Assuming your video is in src/assets/demo.mp4
+import demoVideo from '../assets/demo.mp4';
 
 const AnimationContainer = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -29,7 +32,7 @@ const AnimationContainer = () => {
 
     const initializeVideo = async () => {
       if (videoRef.current && mounted) {
-        videoRef.current.src = "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4";
+        // No need to set src attribute when using the src prop in the video element
         try {
           if (mounted) {
             playPromise = videoRef.current.play();
@@ -96,6 +99,7 @@ const AnimationContainer = () => {
             <video
               ref={videoRef}
               className="w-full h-full object-cover"
+              src={demoVideo}
               muted
               playsInline
               loop
