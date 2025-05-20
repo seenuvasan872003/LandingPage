@@ -26,6 +26,7 @@ const Hero = ({ theme }) => {
           </button>
           
           <button 
+            onClick={() => window.open('https://app.gowhats.in', '_blank')}
             className={`px-6 py-2 z-10 border ${theme === 'light' ? 'bg-black text-white hover:bg-white hover:text-black hover:border-black' : 'bg-white text-black hover:bg-black hover:text-white hover:border-white'} rounded-full transition`}
           >
             Start for free

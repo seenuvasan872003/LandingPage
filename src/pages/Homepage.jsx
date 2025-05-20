@@ -5,6 +5,8 @@ import LogoShowcase from '../components/LogoShowcase.jsx';
 import TestimonialSection from '../components/TestimonialSection.jsx';
 import Features from '../components/Features.jsx';
 import AIChatDemo from '../components/AIChatDemo.jsx';
+import FAQ from '../components/FAQ.jsx';
+import CTA from '../components/CTA.jsx';
 
 const Homepage = ({ theme, setTheme }) => {
   return (
@@ -16,6 +18,8 @@ const Homepage = ({ theme, setTheme }) => {
         <Features theme={theme} setTheme={setTheme} />
         <AIChatDemo theme={theme} setTheme={setTheme} />
         <TestimonialSection theme={theme} setTheme={setTheme} />
+        <FAQ theme={theme} setTheme={setTheme} />
+        <CTA theme={theme} setTheme={setTheme} />
       </div>
     </>
   );
