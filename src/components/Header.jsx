@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Globe, Menu, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
-export default function Header() {
+export default function Header({ theme, setTheme }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,8 +32,14 @@ export default function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed w-full z-50 transition-all duration-500 ${
-          isScrolled ? 'bg-black/80 backdrop-blur-md shadow-lg' : 'bg-black/0'
-        }`}
+          isScrolled 
+            ? theme === 'light' 
+              ? 'bg-white/80 backdrop-blur-md shadow-lg' 
+              : 'bg-black/80 backdrop-blur-md shadow-lg' 
+            : theme === 'light'
+              ? 'bg-transparent backdrop-blur-sm'
+              : 'bg-black/0'
+        } ${theme === 'light' ? 'text-black' : ''}`}
       >
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
@@ -44,8 +51,8 @@ export default function Header() {
               className="flex items-center space-x-2"
             >
               <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
-                <MessageSquare className="h-7 w-7 text-[#25D366]" />
-                <span className="text-xl font-bold text-white">GoWhats</span>
+                <MessageSquare className={`h-7 w-7 text-[#25D366]`} />
+                <span className={`text-xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'}`}>GoWhats</span>
               </div>
             </motion.div>
 
@@ -66,7 +73,8 @@ export default function Header() {
                     <button
                       onClick={() => navigate(item.path)}
                       className={`text-sm font-medium transition-colors hover:text-[#25D366] ${
-                        location.pathname === item.path ? 'text-[#25D366]' : 'text-white'
+                        location.pathname === item.path ? 'text-[#25D366]' : 
+                        theme === 'light' ? 'text-black' : 'text-white'
                       }`}
                     >
                       {item.name}
@@ -90,20 +98,25 @@ export default function Header() {
               ))}
             </div>
 
-            {/* Mobile Menu Button & Language Icon */}
+            {/* Right Side Menu Items (Theme Toggle & Language) */}
             <div className="flex items-center space-x-4">
               {/* Mobile Menu Button */}
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                className="md:hidden text-white"
+                className={`md:hidden ${theme === 'light' ? 'text-black' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </motion.button>
 
+              {/* Theme Toggle - Add to RIGHT SIDE before language icon */}
+              <div className="hidden md:block">
+                <ThemeToggle theme={theme} setTheme={setTheme} />
+              </div>
+
               {/* Language Globe Icon - RIGHT SIDE */}
               <div
-                className="md:flex hidden items-center text-white hover:text-[#25D366] cursor-pointer"
+                className={`md:flex hidden items-center ${theme === 'light' ? 'text-black' : 'text-white'} hover:text-[#25D366] cursor-pointer`}
                 onClick={() => alert("Language selector coming soon!")}
               >
                 <Globe className="h-5 w-5" />
@@ -121,7 +134,9 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-0 top-[72px] z-40 bg-black/80 backdrop-blur-md shadow-lg md:hidden"
+            className={`fixed inset-x-0 top-[72px] z-40 ${
+              theme === 'light' ? 'bg-white/80' : 'bg-black/80'
+            } backdrop-blur-md shadow-lg md:hidden`}
           >
             <div className="container mx-auto px-4 py-4">
               <div className="flex flex-col space-y-4">
@@ -132,13 +147,22 @@ export default function Header() {
                       navigate(item.path);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={` z-50 text-sm font-medium transition-colors hover:text-[#25D366] ${
-                      location.pathname === item.path ? 'text-[#25D366]' : 'text-white'
+                    className={`z-50 text-sm font-medium transition-colors hover:text-[#25D366] ${
+                      location.pathname === item.path ? 'text-[#25D366]' : 
+                      theme === 'light' ? 'text-black' : 'text-white'
                     }`}
                   >
                     {item.name}
                   </button>
                 ))}
+                
+                {/* Theme Toggle in Mobile Menu */}
+                <div className="flex items-center justify-between py-2">
+                  <span className={`text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+                    {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                  </span>
+                  <ThemeToggle theme={theme} setTheme={setTheme} />
+                </div>
               </div>
             </div>
           </motion.div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Star, BarChart2, Activity, Zap, Image, Compass, Map, PieChart, Heart, Cpu, Database, Cloud, Globe, Shield } from 'lucide-react';
 
-const LogoShowcase = () => {
+const LogoShowcase = ({ theme }) => {
   // Reusable logo component
   const Logo = ({ icon, text, color = "text-gray-400" }) => (
     <div className="mx-8 transition-all duration-300 hover:scale-110 cursor-pointer group">
@@ -9,7 +9,7 @@ const LogoShowcase = () => {
         <div className={`${color} group-hover:text-green-400 transition-colors duration-300`}>
           {icon}
         </div>
-        <span className="font-bold text-xl text-gray-300 group-hover:text-green-400 transition-colors duration-300">
+        <span className={`font-bold text-xl ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'} group-hover:text-green-400 transition-colors duration-300`}>
           {text}
         </span>
       </div>
@@ -23,14 +23,14 @@ const LogoShowcase = () => {
         <div className="text-green-400">
           <Activity size={24} className="stroke-[3]" />
         </div>
-        <div className="font-bold text-gray-200">
+        <div className={`font-bold ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>
           Meta Business<br />
-          <span className="font-normal text-gray-400">Partners</span>
+          <span className={`font-normal ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Partners</span>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-lg shadow-lg border border-gray-800">
-        <div className="text-2xl font-bold text-gray-200">4.7/5</div>
+      <div className={`flex items-center gap-2 ${theme === 'light' ? 'bg-gray-100 border-gray-200' : 'bg-gray-900 border-gray-800'} px-4 py-2 rounded-lg shadow-lg border`}>
+        <div className={`text-2xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>4.7/5</div>
         <div className="flex">
           {[1, 2, 3, 4, 5].map(i => (
             <Star
@@ -40,7 +40,7 @@ const LogoShowcase = () => {
             />
           ))}
         </div>
-        <div className="text-xs text-gray-400 uppercase font-semibold tracking-wider">
+        <div className={`text-xs ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} uppercase font-semibold tracking-wider`}>
           Rating on G2
         </div>
       </div>
@@ -66,9 +66,9 @@ const LogoShowcase = () => {
   ];
 
   return (
-    <div className="py-16 overflow-hidden bg-black my-2.5 ">
+    <div className={`py-16 overflow-hidden ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} mb-4 my-2.5`}>
       <div className="container mx-auto mb-12 px-4 text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-200 mb-1">
+        <h2 className={`text-2xl sm:text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'} mb-1`}>
           Trusted by 5000+ brands across 40+ countries
         </h2>
       </div>

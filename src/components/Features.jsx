@@ -2,7 +2,7 @@
 import React from 'react';
 import { MessageSquare, Bot, FileText, Tag, Radio, ShoppingBag } from 'lucide-react';
 
-const FeatureCard = ({ icon: Icon, title, description }) => {
+const FeatureCard = ({ icon: Icon, title, description, theme }) => {
   return (
     <div className="group relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
@@ -13,7 +13,7 @@ const FeatureCard = ({ icon: Icon, title, description }) => {
           </div>
         </div>
         <div className="flex-1 text-left">
-          <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">
+          <h3 className={`text-xl font-semibold ${theme === 'light' ? 'text-black' : 'text-white'} mb-2 group-hover:text-emerald-400 transition-colors duration-300`}>
             {title}
           </h3>
           <p className="text-gray-400 leading-relaxed text-sm">
@@ -25,12 +25,12 @@ const FeatureCard = ({ icon: Icon, title, description }) => {
   );
 };
 
-const Header = () => {
+const Header = ({ theme }) => {
   return (
     <div className="relative text-center mb-24 px-4 mt-2">
       <div className="absolute inset-0 -top-20 bg-gradient-to-b from-emerald-500/20 via-emerald-500/5 to-transparent blur-3xl" />
       <div className="relative">
-        <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 mb-6 tracking-tight">
+        <h1 className={`text-2xl md:text-4xl font-bold ${theme === 'light' ? 'text-black' : 'text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500'} mb-6 tracking-tight`}>
           Everything You Need to Automate WhatsApp
         </h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
@@ -41,7 +41,7 @@ const Header = () => {
   );
 };
 
-const Features = () => {
+const Features = ({ theme = 'dark' }) => {
   const features = [
     {
       icon: MessageSquare,
@@ -77,9 +77,8 @@ const Features = () => {
 
   return (
     <>
-      
-      <div className="relative bg-black text-white my-2.5">
-      <Header />
+      <div className={`relative bg-${theme === 'light' ? 'white' : 'black'} ${theme === 'light' ? 'text-black' : 'text-white'} mt-2.5 py-2.5 my-2.5`}>
+        <Header theme={theme} />
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/30 to-transparent opacity-20 blur-3xl -z-10" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 max-w-6xl mx-auto">
           {features.map((feature, index) => (
@@ -88,6 +87,7 @@ const Features = () => {
               icon={feature.icon}
               title={feature.title}
               description={feature.description}
+              theme={theme}
             />
           ))}
         </div>

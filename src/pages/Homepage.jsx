@@ -1,27 +1,24 @@
-import React from 'react'
-// import HeroSection from '../components/flotinghero/parallax-floating-demo'
+import React from 'react';
 import Hero from '../components/Hero.jsx';
-// import { SmoothScrollHero } from '/src/components/SmoothScrollHero.jsx';
 import Imagesection from '../components/Imagesection.jsx';
-import LogoShowcase from '../components/LogoShowcase.jsx'
+import LogoShowcase from '../components/LogoShowcase.jsx';
 import TestimonialSection from '../components/TestimonialSection.jsx';
-import Features from '../components/Features.jsx'
+import Features from '../components/Features.jsx';
 import AIChatDemo from '../components/AIChatDemo.jsx';
 
-const Homepage = () => {
+const Homepage = ({ theme, setTheme }) => {
   return (
     <>
-        <div className='bg-black'>
-          <Hero />
-          {/* <HeroSection /> */}
-          <Imagesection />
-          <LogoShowcase />
-          <Features />
-          <AIChatDemo />
-          <TestimonialSection />
-        </div>
+      <div className={`${theme === 'light' ? 'bg-white' : 'bg-black'} transition-colors duration-300`}>
+        <Hero theme={theme} setTheme={setTheme} />
+        <Imagesection theme={theme} setTheme={setTheme} />
+        <LogoShowcase theme={theme} setTheme={setTheme} />
+        <Features theme={theme} setTheme={setTheme} />
+        <AIChatDemo theme={theme} setTheme={setTheme} />
+        <TestimonialSection theme={theme} setTheme={setTheme} />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;

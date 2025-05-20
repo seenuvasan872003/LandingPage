@@ -9,11 +9,52 @@ import { motion, AnimatePresence } from 'framer-motion';
  * @param {Object} props
  * @param {React.ReactNode} props.children
  */
-const TestimonialSection = () => {
+const TestimonialSection = ({ theme = 'dark' }) => {
   const [showReviews, setShowReviews] = useState(true);
-  const [rating, setRating] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    review: '',
+    rating: 0
+  });
   const [hoveredRating, setHoveredRating] = useState(0);
   const nameInputRef = useRef(null);
+  const formRef = useRef(null);
+
+  // Handle input changes safely
+  const handleInputChange = (e) => {
+    if (!e || !e.target) return;
+    const { name, value } = e.target;
+    
+    if (name) {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
+  };
+
+  const handleRatingChange = (rating) => {
+    setFormData(prev => ({
+      ...prev,
+      rating
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Process form submission here
+    console.log('Form submitted:', formData);
+    
+    // Reset form and go back to reviews
+    setFormData({
+      name: '',
+      company: '',
+      review: '',
+      rating: 0
+    });
+    setShowReviews(true);
+  };
 
   const Highlight = ({ children }) => (
     <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent font-semibold">
@@ -80,8 +121,6 @@ const TestimonialSection = () => {
         <button
           onClick={() => {
             setShowReviews(true);
-            setRating(0);
-            setHoveredRating(0);
           }}
           className="flex items-center text-green-500 hover:text-green-400 mb-8 transition-colors"
         >
@@ -89,43 +128,49 @@ const TestimonialSection = () => {
           Back to Reviews
         </button>
         
-        <form className="space-y-6">
+        <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-white mb-2">Your Name</label>
+            <label className={`block ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-2`}>Your Name</label>
             <input
               ref={nameInputRef}
               type="text"
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+              name="name"
+              value={formData.name || ''}
+              onChange={handleInputChange}
+              className={`w-full ${theme === 'light' ? 'bg-gray-100 border-gray-300 text-gray-800' : 'bg-zinc-800 border-zinc-700 text-white'} border rounded-lg px-4 py-2 focus:outline-none focus:border-green-500`}
               placeholder="Enter your name"
             />
           </div>
           
           <div>
-            <label className="block text-white mb-2">Company Name</label>
+            <label className={`block ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-2`}>Company Name</label>
             <input
               type="text"
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+              name="company"
+              value={formData.company || ''}
+              onChange={handleInputChange}
+              className={`w-full ${theme === 'light' ? 'bg-gray-100 border-gray-300 text-gray-800' : 'bg-zinc-800 border-zinc-700 text-white'} border rounded-lg px-4 py-2 focus:outline-none focus:border-green-500`}
               placeholder="Your company name"
             />
           </div>
           
           <div>
-            <label className="block text-white mb-2">Rating</label>
+            <label className={`block ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-2`}>Rating</label>
             <div className="flex gap-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
                   type="button"
-                  // onMouseEnter={() => setHoveredRating(star)}
-                  // onMouseLeave={() => setHoveredRating(0)}
-                  onClick={() => setRating(star)}
+                  onMouseEnter={() => setHoveredRating(star)}
+                  onMouseLeave={() => setHoveredRating(0)}
+                  onClick={() => handleRatingChange(star)}
                   className="transition-colors"
                 >
                   <Star 
                     className={`w-6 h-6 ${
-                      star <= (hoveredRating || rating)
+                      star <= (hoveredRating || formData.rating)
                         ? 'text-green-500 fill-green-500'
-                        : 'text-zinc-500'
+                        : theme === 'light' ? 'text-gray-300' : 'text-zinc-500'
                     }`}
                   />
                 </button>
@@ -134,9 +179,12 @@ const TestimonialSection = () => {
           </div>
           
           <div>
-            <label className="block text-white mb-2">Your Review</label>
+            <label className={`block ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-2`}>Your Review</label>
             <textarea
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500 h-32"
+              name="review"
+              value={formData.review || ''}
+              onChange={handleInputChange}
+              className={`w-full ${theme === 'light' ? 'bg-gray-100 border-gray-300 text-gray-800' : 'bg-zinc-800 border-zinc-700 text-white'} border rounded-lg px-4 py-2 focus:outline-none focus:border-green-500 h-32`}
               placeholder="Share your experience..."
             />
           </div>
@@ -153,7 +201,7 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section className="bg-black py-20 px-4 md:py-32 my-2.5">
+    <section className={`${theme === 'light' ? 'bg-gray-100' : 'bg-black'} py-20 px-4 md:py-32 my-2.5`}>
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
@@ -177,7 +225,7 @@ const TestimonialSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-bold text-white text-center mb-6 tracking-tight"
+          className={`text-5xl md:text-6xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'} text-center mb-6 tracking-tight`}
         >
           See <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">why</span> our customers are excited
         </motion.h2>
@@ -187,7 +235,7 @@ const TestimonialSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-xl text-gray-400 text-center mb-20 max-w-3xl mx-auto"
+          className={`text-xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} text-center mb-20 max-w-3xl mx-auto`}
         >
           Trusted by 5,000+ developers worldwide to elevate their apps with WhatsApp integration
         </motion.p>
@@ -201,6 +249,7 @@ const TestimonialSection = () => {
                     key={index}
                     {...testimonial}
                     index={index}
+                    theme={theme}
                   />
                 ))}
               </div>

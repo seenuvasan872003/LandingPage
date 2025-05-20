@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-const BookDemo = () => {
+const BookDemo = ({ theme = 'dark' }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,7 +23,6 @@ const BookDemo = () => {
 
   // Initialize EmailJS on component mount
   useEffect(() => {
-    
     emailjs.init("1v191cwFPow0zxRlB");
   }, []);
 
@@ -111,29 +110,29 @@ const BookDemo = () => {
   };
 
   return (
-    <div className="container bg-black mx-auto px-4 py-16 relative z-10">
+    <div className={`container ${theme === 'light' ? 'bg-gray-100' : 'bg-black'} mx-auto px-4 py-16 relative z-10`}>
       {/* Header Section */}
       <div className="text-center mb-16">
-        <h1 className="text-6xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-4">
+        <h1 className={`text-6xl font-bold ${theme === 'light' ? 'bg-gradient-to-r from-gray-800 to-gray-600' : 'bg-gradient-to-r from-white to-gray-400'} bg-clip-text text-transparent mb-4`}>
           Let's Talk!
         </h1>
-        <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+        <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} text-xl max-w-2xl mx-auto`}>
           Have a question or idea? Drop us a message and we'll get back to you!
         </p>
       </div>
 
       <div className="flex flex-col lg:flex-row items-start justify-between gap-16">
         {/* Contact Info Section */}
-        <div className="lg:w-1/2 w-full animate-fade-in p-10 bg-black/30 backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.07)]">
-          <h2 className="text-3xl font-bold text-white mb-8">Contact Information</h2>
+        <div className={`lg:w-1/2 w-full animate-fade-in p-10 ${theme === 'light' ? 'bg-white/80' : 'bg-black/30'} backdrop-blur-md rounded-2xl border ${theme === 'light' ? 'border-gray-200' : 'border-white/10'} shadow-[0_0_15px_rgba(0,0,0,0.07)]`}>
+          <h2 className={`text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-8`}>Contact Information</h2>
           <div className="space-y-8">
             <div className="flex items-center group">
               <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mr-4 group-hover:bg-emerald-500/20 transition-all duration-300">
                 <Phone className="text-emerald-400" size={20} />
               </div>
               <div>
-                <h3 className="text-white text-lg font-medium">+91 85240 89733</h3>
-                <p className="text-gray-400">Call or WhatsApp</p>
+                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>+91 85240 89733</h3>
+                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Call or WhatsApp</p>
               </div>
             </div>
             
@@ -142,8 +141,8 @@ const BookDemo = () => {
                 <Mail className="text-emerald-400" size={20} />
               </div>
               <div>
-                <h3 className="text-white text-lg font-medium">techvaseegrah@gmail.com</h3>
-                <p className="text-gray-400">Email Anytime</p>
+                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>techvaseegrah@gmail.com</h3>
+                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Email Anytime</p>
               </div>
             </div>
             
@@ -152,8 +151,8 @@ const BookDemo = () => {
                 <MapPin className="text-emerald-400" size={20} />
               </div>
               <div>
-                <h3 className="text-white text-lg font-medium">Thanjavur, Tamil Nadu</h3>
-                <p className="text-gray-400">Our HQ</p>
+                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>Thanjavur, Tamil Nadu</h3>
+                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Our HQ</p>
               </div>
             </div>
           </div>
@@ -161,9 +160,9 @@ const BookDemo = () => {
 
         {/* Contact Form Section */}
         <div className="lg:w-1/2 w-full animate-slide-up">
-          <div className="w-full max-w-xl bg-black/30 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.07)]">
-            <h2 className="text-3xl font-bold text-white mb-6">Get in Touch</h2>
-            <p className="text-gray-300 mb-8">We're happy to hear from you.</p>
+          <div className={`w-full max-w-xl ${theme === 'light' ? 'bg-white/80' : 'bg-black/30'} backdrop-blur-md p-8 rounded-2xl border ${theme === 'light' ? 'border-gray-200' : 'border-white/10'} shadow-[0_0_15px_rgba(0,0,0,0.07)]`}>
+            <h2 className={`text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-6`}>Get in Touch</h2>
+            <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} mb-8`}>We're happy to hear from you.</p>
             
             {/* Status Message */}
             {submitStatus.status && (
@@ -183,14 +182,14 @@ const BookDemo = () => {
                     onChange={handleChange}
                     onFocus={() => handleFocus('firstName')}
                     onBlur={handleBlur}
-                    className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                    className={`w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300' : 'bg-white/5 border-gray-700'} border rounded-lg px-4 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300`}
                     placeholder=" "
                     required
                   />
                   <label 
                     htmlFor="firstName" 
-                    className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
-                      formData.firstName || focused === 'firstName' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                    className={`absolute left-4 transition-all duration-300 pointer-events-none ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} ${
+                      formData.firstName || focused === 'firstName' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                     }`}
                   >
                     First Name
@@ -206,14 +205,14 @@ const BookDemo = () => {
                     onChange={handleChange}
                     onFocus={() => handleFocus('lastName')}
                     onBlur={handleBlur}
-                    className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                    className={`w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300' : 'bg-white/5 border-gray-700'} border rounded-lg px-4 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300`}
                     placeholder=" "
                     required
                   />
                   <label 
                     htmlFor="lastName" 
-                    className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
-                      formData.lastName || focused === 'lastName' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                    className={`absolute left-4 transition-all duration-300 pointer-events-none ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} ${
+                      formData.lastName || focused === 'lastName' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                     }`}
                   >
                     Last Name
@@ -230,13 +229,13 @@ const BookDemo = () => {
                   onChange={handleChange}
                   onFocus={() => handleFocus('companyName')}
                   onBlur={handleBlur}
-                  className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                  className={`w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300' : 'bg-white/5 border-gray-700'} border rounded-lg px-4 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300`}
                   placeholder=" "
                 />
                 <label 
                   htmlFor="companyName" 
-                  className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
-                    formData.companyName || focused === 'companyName' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} ${
+                    formData.companyName || focused === 'companyName' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                   }`}
                 >
                   Company Name
@@ -252,14 +251,14 @@ const BookDemo = () => {
                   onChange={handleChange}
                   onFocus={() => handleFocus('email')}
                   onBlur={handleBlur}
-                  className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                  className={`w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300' : 'bg-white/5 border-gray-700'} border rounded-lg px-4 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300`}
                   placeholder=" "
                   required
                 />
                 <label 
                   htmlFor="email" 
-                  className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
-                    formData.email || focused === 'email' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} ${
+                    formData.email || focused === 'email' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                   }`}
                 >
                   Email
@@ -275,13 +274,13 @@ const BookDemo = () => {
                   onChange={handleChange}
                   onFocus={() => handleFocus('phone')}
                   onBlur={handleBlur}
-                  className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                  className={`w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300' : 'bg-white/5 border-gray-700'} border rounded-lg px-4 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300`}
                   placeholder=" "
                 />
                 <label 
                   htmlFor="phone" 
-                  className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
-                    formData.phone || focused === 'phone' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} ${
+                    formData.phone || focused === 'phone' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                   }`}
                 >
                   Phone
@@ -298,10 +297,10 @@ const BookDemo = () => {
                     onChange={(e) => setDate(e.target.value)}
                     onFocus={() => handleFocus('date')}
                     onBlur={handleBlur}
-                    className="custom-date-input w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300"
+                    className={`custom-date-input w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300 date-light' : 'bg-white/5 border-gray-700 date-dark'} border rounded-lg px-4 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300`}
                     required
                   />
-                  <label className="absolute text-xs -top-2.5 left-4 bg-black px-1 text-gray-400">
+                  <label className={`absolute text-xs -top-2.5 left-4 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                     Date
                   </label>
                 </div>
@@ -312,15 +311,15 @@ const BookDemo = () => {
                       id="hours"
                       value={hours}
                       onChange={(e) => setHours(e.target.value)}
-                      className="w-full bg-white/5 border border-gray-700 rounded-lg px-3 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300 appearance-none"
+                      className={`w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300' : 'bg-white/5 border-gray-700'} border rounded-lg px-3 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300 appearance-none`}
                     >
                       {Array.from({ length: 12 }, (_, i) => i + 1).map(hour => (
-                        <option className='text-black' key={hour} value={hour < 10 ? `0${hour}` : hour.toString()}>
+                        <option className={`${theme === 'light' ? 'text-gray-800' : 'text-black'}`} key={hour} value={hour < 10 ? `0${hour}` : hour.toString()}>
                           {hour < 10 ? `0${hour}` : hour}
                         </option>
                       ))}
                     </select>
-                    <label className="absolute text-xs -top-2.5 left-4 bg-black px-1 text-gray-400">
+                    <label className={`absolute text-xs -top-2.5 left-4 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                       Hour
                     </label>
                   </div>
@@ -334,33 +333,33 @@ const BookDemo = () => {
                       id="minutes"
                       value={minutes}
                       onChange={(e) => setMinutes(e.target.value)}
-                      className="w-full bg-white/5 border border-gray-700 rounded-lg px-3 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300 appearance-none"
+                      className={`w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300' : 'bg-white/5 border-gray-700'} border rounded-lg px-3 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300 appearance-none`}
                     >
                       {Array.from({ length: 60 }, (_, i) => i).map(minute => (
-                        <option className='text-black' key={minute} value={minute < 10 ? `0${minute}` : minute.toString()}>
+                        <option className={`${theme === 'light' ? 'text-gray-800' : 'text-black'}`} key={minute} value={minute < 10 ? `0${minute}` : minute.toString()}>
                           {minute < 10 ? `0${minute}` : minute}
                         </option>
                       ))}
                     </select>
-                    <label className="absolute text-xs -top-2.5 left-4 bg-black px-1 text-gray-400">
+                    <label className={`absolute text-xs -top-2.5 left-4 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                       Min
                     </label>
                   </div>
 
                   <div className="col-span-5 relative flex">
                     <div 
-                      className={`flex-1 text-center py-2 rounded-l-lg cursor-pointer border border-r-0 border-gray-700 transition-all ${period === 'AM' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/5 text-gray-400'}`}
+                      className={`flex-1 text-center py-2 rounded-l-lg cursor-pointer border ${theme === 'light' ? 'border-gray-300' : 'border-gray-700'} border-r-0 transition-all ${period === 'AM' ? 'bg-emerald-500/20 text-emerald-400' : `${theme === 'light' ? 'bg-gray-50' : 'bg-white/5'} ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}`}
                       onClick={() => setPeriod('AM')}
                     >
                       AM
                     </div>
                     <div 
-                      className={`flex-1 text-center py-2 rounded-r-lg cursor-pointer border border-gray-700 transition-all ${period === 'PM' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/5 text-gray-400'}`}
+                      className={`flex-1 text-center py-2 rounded-r-lg cursor-pointer border ${theme === 'light' ? 'border-gray-300' : 'border-gray-700'} transition-all ${period === 'PM' ? 'bg-emerald-500/20 text-emerald-400' : `${theme === 'light' ? 'bg-gray-50' : 'bg-white/5'} ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}`}
                       onClick={() => setPeriod('PM')}
                     >
                       PM
                     </div>
-                    <Clock size={16} className="absolute right-3 top-3 text-gray-400" />
+                    <Clock size={16} className={`absolute right-3 top-3 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
                   </div>
                 </div>
               </div>
@@ -374,14 +373,14 @@ const BookDemo = () => {
                   onChange={handleChange}
                   onFocus={() => handleFocus('message')}
                   onBlur={handleBlur}
-                  className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-emerald-400 transition-all duration-300 resize-none"
+                  className={`w-full ${theme === 'light' ? 'bg-gray-50 border-gray-300' : 'bg-white/5 border-gray-700'} border rounded-lg px-4 py-3 ${theme === 'light' ? 'text-gray-800' : 'text-white'} outline-none focus:border-emerald-400 transition-all duration-300 resize-none`}
                   placeholder=" "
                   required
                 />
                 <label 
                   htmlFor="message" 
-                  className={`absolute left-4 transition-all duration-300 pointer-events-none text-gray-400 ${
-                    formData.message || focused === 'message' ? 'text-xs -top-2.5 bg-black px-1' : 'text-base top-3'
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} ${
+                    formData.message || focused === 'message' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                   }`}
                 >
                   Message

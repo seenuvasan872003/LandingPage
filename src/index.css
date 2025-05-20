@@ -26,19 +26,29 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Chrome, Safari, Edge */
-.custom-date-input::-webkit-calendar-picker-indicator {
-  filter: brightness(0) invert(1); /* makes it white */
+/* Date Picker Light Theme */
+.date-light::-webkit-calendar-picker-indicator {
+  filter: none; /* Default color for light theme */
   cursor: pointer;
 }
 
-/* Firefox */
-.custom-date-input::-moz-focus-inner {
-  color: white;
+/* Date Picker Dark Theme */
+.date-dark::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1); /* Makes it white for dark theme */
+  cursor: pointer;
 }
 
-/* Optional: remove default background */
+/* Optional: remove default background for both themes */
 .custom-date-input::-webkit-inner-spin-button,
 .custom-date-input::-webkit-clear-button {
   display: none;
+}
+
+/* Firefox styling for both themes */
+.date-light::-moz-focus-inner {
+  color: black;
+}
+
+.date-dark::-moz-focus-inner {
+  color: white;
 }
