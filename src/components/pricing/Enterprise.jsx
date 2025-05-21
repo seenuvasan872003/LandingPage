@@ -29,7 +29,7 @@ const features = [
 const Enterprise = ({ theme }) => {
   return (
     <motion.section 
-      className="py-16"
+      className="py-16 px-5"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}

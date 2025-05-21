@@ -72,7 +72,7 @@ const PricingSection = ({ theme }) => {
       </motion.div>
       
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        className="grid grid-cols-1 md:grid-cols-3 gap-8 px-3.5"
         variants={container}
         initial="hidden"
         whileInView="show"

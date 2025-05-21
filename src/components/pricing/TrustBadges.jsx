@@ -62,7 +62,7 @@ const TrustBadges = ({ theme = 'light' }) => {
         </motion.h2>
         
         <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
+          className="grid grid-cols-2 md:grid-cols-3  gap-8"
           variants={container}
           initial="hidden"
           whileInView="show"

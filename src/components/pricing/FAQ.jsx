@@ -70,7 +70,7 @@ const FAQ = () => {
             <button
               className={`w-full text-left p-6 rounded-lg flex justify-between items-center ${
                 activeIndex === index 
-                  ? 'bg-blue-50 text-blue-700' 
+                  ? 'bg-blue-50 text-green-700' 
                   : 'bg-white text-gray-900 hover:bg-gray-50'
               } border transition-colors duration-200 shadow-sm`}
               onClick={() => toggleFAQ(index)}
