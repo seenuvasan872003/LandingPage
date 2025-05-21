@@ -62,27 +62,7 @@ const Hero = ({ theme }) => {
         </button>
       </motion.div>
       
-      <motion.div 
-        className={`inline-flex items-center p-1 rounded-full ${
-          theme === 'light' ? 'bg-gray-200' : 'bg-gray-800'
-        } mb-12`}
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-      >
-        <button className={`px-6 py-2 rounded-full ${
-          theme === 'light' 
-            ? 'bg-white shadow-sm text-black' 
-            : 'bg-black shadow-sm text-white'
-        } font-medium`}>
-          Monthly
-        </button>
-        <button className={`px-6 py-2 rounded-full ${
-          theme === 'light' ? 'text-gray-700' : 'text-gray-300'
-        } font-medium`}>
-          Yearly
-        </button>
-      </motion.div>
+      
     </motion.section>
   );
 };
