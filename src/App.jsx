@@ -5,6 +5,7 @@ import Header from './components/Header.jsx';
 import Homepage from './pages/Homepage.jsx';
 import Footer from './components/Footer.jsx';
 import BookDemo from './components/Bookdemo.jsx';
+import Pricingpage from './pages/Pricingpage.jsx';
 
 
 function App() {
@@ -37,11 +38,12 @@ function App() {
             {/* Define the default route for GoWhats component */}
             <Route path="/" element={<Homepage theme={theme} setTheme={setTheme}  />} />
             <Route path="/book-demo" element={<BookDemo theme={theme} setTheme={setTheme}  />} />
+            <Route path="/price" element={<Pricingpage theme={theme} setTheme={setTheme} />}/>
             {/* <Route path="/contact" element={<Contact />} />
             <Route path="/integration" element={<Integration />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/documentation" element={<Documentation />} />
-            <Route path="/price" element={<Price/>}/>
+            
             <Route path="/blog" element={<Blog/>}/> */}
           </Routes>
         </main>
