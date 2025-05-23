@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BookDemo = ({ theme = 'dark' }) => {
   const [formData, setFormData] = useState({
@@ -19,7 +21,6 @@ const BookDemo = ({ theme = 'dark' }) => {
   const [period, setPeriod] = useState('AM');
   const [focused, setFocused] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ status: '', message: '' });
 
   // Initialize EmailJS on component mount
   useEffect(() => {
@@ -88,24 +89,31 @@ const BookDemo = ({ theme = 'dark' }) => {
       setMinutes('00');
       setPeriod('AM');
       
-      // Show success message
-      setSubmitStatus({
-        status: 'success',
-        message: 'Your message has been sent successfully! Check your email for confirmation.'
+      // Show success toast notification
+      toast.success('Your message has been sent successfully! Check your email for confirmation.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: theme === 'light' ? 'light' : 'dark',
       });
     } catch (error) {
       console.error('Failed to send email:', error);
-      setSubmitStatus({
-        status: 'error',
-        message: 'Failed to send your message. Please try again later.'
+      
+      // Show error toast notification
+      toast.error('Failed to send your message. Please try again later.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: theme === 'light' ? 'light' : 'dark',
       });
     } finally {
       setLoading(false);
-      
-      // Clear status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus({ status: '', message: '' });
-      }, 5000);
     }
   };
 
@@ -163,13 +171,6 @@ const BookDemo = ({ theme = 'dark' }) => {
           <div className={`w-full max-w-xl ${theme === 'light' ? 'bg-white/80' : 'bg-black/30'} backdrop-blur-md p-8 rounded-2xl border ${theme === 'light' ? 'border-gray-200' : 'border-white/10'} shadow-[0_0_15px_rgba(0,0,0,0.07)]`}>
             <h2 className={`text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-6`}>Get in Touch</h2>
             <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} mb-8`}>We're happy to hear from you.</p>
-            
-            {/* Status Message */}
-            {submitStatus.status && (
-              <div className={`mb-6 p-4 rounded-lg ${submitStatus.status === 'success' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}`}>
-                {submitStatus.message}
-              </div>
-            )}
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -405,6 +406,28 @@ const BookDemo = ({ theme = 'dark' }) => {
           </div>
         </div>
       </div>
+
+      {/* Toast Container */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={theme === 'light' ? 'light' : 'dark'}
+        toastClassName="custom-toast"
+        bodyClassName="custom-toast-body"
+        style={{ 
+          zIndex: 200,
+          top: '80px',
+          right: '20px'
+
+         }}
+      />
     </div>
   );
 };

@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { MoreVertical, Camera, RefreshCw } from 'lucide-react';
 // Import your local video
-import demoVideo from '../assets/demo.mp4';
+import demoVideo from '../../assets/demo.mp4';
 
 const AnimationContainer = ({ theme }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);

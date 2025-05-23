@@ -16,7 +16,7 @@ const features = [
   { name: 'Priority Support', freeTrial: false, basic: false, custom: true }
 ];
 
-const FeatureComparison = () => {
+const FeatureComparison = ({theme}) => {
   return (
     <motion.section 
       className="py-16 px-5"
@@ -26,7 +26,7 @@ const FeatureComparison = () => {
       transition={{ duration: 0.8 }}
     >
       <motion.h2 
-        className="text-3xl font-bold text-center mb-12 text-gray-900"
+        className={`text-3xl font-bold text-center mb-12 ${theme === 'light' ? 'text-black' : 'text-white'} `}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

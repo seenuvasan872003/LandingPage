@@ -88,17 +88,7 @@ const TrustBadges = ({ theme = 'light' }) => {
           ))}
         </motion.div>
         
-        <motion.div 
-          className={`text-center mt-12 text-sm ${
-            theme === 'light' ? 'text-gray-600' : 'text-gray-400'
-          }`}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-        >
-          © 2025 WhatsApp API Platform. All rights reserved.
-        </motion.div>
+        
       </div>
     </section>
   );

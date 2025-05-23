@@ -10,9 +10,9 @@ const Hero = ({ theme }) => {
       {/* Left Column - Text Content */}
       <div className={`flex flex-col justify-center px-6 md:px-10 lg:px-16 py-16 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} text-center md:text-left`}>
         <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'} leading-tight mb-6`}>
-          <span className="md:block inline">Automate your</span>
-          <span className="md:block inline">business with</span>
-          <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent inline md:block">WhatsApp API!</span>
+          <span className="md:block mr-2  inline">Automate your</span>
+          <span className="md:block px-1 inline">business with</span>
+          <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent inline md:block ml-2">WhatsApp API!</span>
         </h1>
         <p className="text-lg text-gray-400 mb-10 max-w-lg text-center md:text-left">
           Engage customers, streamline support, and boost sales with our powerful WhatsApp Business API integration platform.

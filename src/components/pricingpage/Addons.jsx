@@ -30,10 +30,10 @@ const addons = [
   }
 ];
 
-const Addons = () => {
+const Addons = ({theme}) => {
   return (
     <motion.section 
-      className="py-16"
+      className="py-16 px-3"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -41,7 +41,7 @@ const Addons = () => {
     >
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-3xl font-bold mb-4 text-center"
+          className={`text-3xl font-bold mb-4 text-center ${theme === 'light' ? 'text-black' : 'text-white'} `}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -26,7 +26,7 @@ const faqs = [
   }
 ];
 
-const FAQ = () => {
+const FAQ = ({ theme }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   
   const toggleFAQ = (index) => {
@@ -42,7 +42,7 @@ const FAQ = () => {
       transition={{ duration: 0.8 }}
     >
       <motion.h2 
-        className="text-3xl font-bold text-center mb-12 text-gray-900"
+        className={`text-3xl font-bold text-center mb-12 ${theme === 'light' ? 'text-black' : 'text-white'} `}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

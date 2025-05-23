@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = ({ theme }) => {
   return (
@@ -50,16 +51,18 @@ const Hero = ({ theme }) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
-        <button className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg shadow-lg transition duration-300">
+        <button onClick={() => window.open('https://app.gowhats.in', '_blank')} className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg shadow-lg transition duration-300">
           Start Free Trial
         </button>
-        <button className={`px-8 py-3 ${
-          theme === 'light' 
+        <Link
+          to="/book-demo"
+          className={`px-8 py-3 ${
+            theme === 'light' 
             ? 'bg-white hover:bg-gray-100 text-black border border-gray-200' 
             : 'bg-black hover:bg-gray-900 text-white border border-gray-800'
-        } font-medium rounded-lg shadow-lg transition duration-300`}>
+          } font-medium rounded-lg shadow-lg transition duration-300`}>
           Schedule a Demo
-        </button>
+        </Link>
       </motion.div>
       
       

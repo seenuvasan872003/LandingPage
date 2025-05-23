@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import Hero from '../components/pricing/Hero';
-import PricingSection from '../components/pricing/PricingSection';
-import FeatureComparison from '../components/pricing/FeatureComparison';
-import Addons from '../components/pricing/Addons';
-import Enterprise from '../components/pricing/Enterprise';
-import FAQ from '../components/pricing/FAQ';
-import BottomCTA from '../components/pricing/BottomCTA';
-import TrustBadges from '../components/pricing/TrustBadges';
+import Hero from '../components/pricingpage/Hero';
+import PricingSection from '../components/pricingpage/PricingSection';
+import FeatureComparison from '../components/pricingpage/FeatureComparison';
+import Addons from '../components/pricingpage/Addons';
+import Enterprise from '../components/pricingpage/Enterprise';
+import FAQ from '../components/pricingpage/FAQ';
+import CTA from '../components/CTA';
+import TrustBadges from '../components/pricingpage/TrustBadges';
 
 const Pricingpage = ({ theme, setTheme }) => {
   return (
@@ -20,7 +20,7 @@ const Pricingpage = ({ theme, setTheme }) => {
             <Enterprise theme={theme} setTheme={setTheme} />
             <TrustBadges theme={theme} setTheme={setTheme} />
             <FAQ theme={theme} setTheme={setTheme} />
-            <BottomCTA theme={theme} setTheme={setTheme} />
+            <CTA theme={theme} setTheme={setTheme} />
         </div>
 
     </>

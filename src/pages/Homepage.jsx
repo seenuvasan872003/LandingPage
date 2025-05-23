@@ -1,11 +1,11 @@
 import React from 'react';
-import Hero from '../components/Hero.jsx';
-import Imagesection from '../components/Imagesection.jsx';
-import LogoShowcase from '../components/LogoShowcase.jsx';
-import TestimonialSection from '../components/TestimonialSection.jsx';
-import Features from '../components/Features.jsx';
-import AIChatDemo from '../components/AIChatDemo.jsx';
-import FAQ from '../components/FAQ.jsx';
+import Hero from '../components/homepage/Hero.jsx';
+import Imagesection from '../components/homepage/Imagesection.jsx';
+import LogoShowcase from '../components/homepage/LogoShowcase.jsx';
+import TestimonialSection from '../components/homepage/TestimonialSection.jsx';
+import Features from '../components/homepage/Features.jsx';
+import AIChatDemo from '../components/homepage/AIChatDemo.jsx';
+import FAQ from '../components/homepage/FAQ.jsx';
 import CTA from '../components/CTA.jsx';
 
 const Homepage = ({ theme, setTheme }) => {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const BottomCTA = () => {
+const BottomCTA = ({theme}) => {
   return (
     <motion.section
       className="py-24 bg-gradient-to-r from-green-500 to-green-700"
