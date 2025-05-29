@@ -34,7 +34,7 @@ const CTA = ({ theme }) => {
                 </span>
               </motion.div>
               
-              <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+              <h2 className={`text-3xl md:text-5xl font-bold mb-6 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
                 {t('Homepage.cta.title')}{' '}
                 <span className={theme === 'light' ? 'text-green-600' : 'text-green-500'}>
                   {t('Homepage.cta.title_highlight')}

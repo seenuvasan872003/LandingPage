@@ -11,7 +11,7 @@ const Hero = ({ theme }) => {
     <div className={`flex-grow grid md:grid-cols-2 grid-cols-1 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} py-20 justify-center items-center`}>
       {/* Left Column - Text Content */}
       <div className={`flex flex-col w-full justify-center px-6 md:px-10 lg:px-16 py-16 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} text-center md:text-left`}>
-        <h1 className={`w-full font-bold ${theme === 'light' ? 'text-black' : 'text-white'} ${ i18n.language === 'ta'  ? 'text-2xl md:text-3xl lg:text-4xl'  : 'text-4xl md:text-5xl lg:text-6xl'} leading-tight mb-6`}>
+        <h1 className={`w-full font-bold ${theme === 'light' ? 'text-black' : 'text-white'} ${ i18n.language === 'ta'  ? 'text-xl md:text-3xl lg:text-4xl pr-2'  : 'text-4xl md:text-5xl lg:text-6xl'} leading-tight mb-6`}>
           <span className={`mr-2 ${ i18n.language === 'ta'  ? 'block'  : 'md:block inline '} `}>{t('Homepage.hero.title1')}</span>
           <span className={`px-1 ${ i18n.language === 'ta'  ? 'block'  : 'md:block inline '}`}>{t('Homepage.hero.title2')}</span>
           <span className={`bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent ml-2 ${ i18n.language === 'ta'  ? 'block'  : 'md:block inline '}`}>{t('Homepage.hero.title3')}</span>

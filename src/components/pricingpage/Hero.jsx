@@ -27,7 +27,7 @@ const Hero = ({ theme }) => {
       </motion.div>
       
       <motion.h1 
-        className={`text-4xl md:text-5xl font-bold mb-4 ${
+        className={`text-3xl md:text-5xl font-bold mb-4 ${
           theme === 'light' ? 'text-black' : 'text-white'
         }`}
         initial={{ y: 20, opacity: 0 }}
