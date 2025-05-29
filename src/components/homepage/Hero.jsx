@@ -19,9 +19,9 @@ const Hero = ({ theme }) => {
         <p className="text-lg text-gray-400 mb-10 max-w-lg text-center md:text-left">
           {t('Homepage.hero.description')}
         </p>
-        <div className="flex space-x-4 justify-center md:justify-start">
+        <div className=" block lg:flex space-x-4 justify-center md:justify-start">
           <button 
-            className={`px-6 py-2 border ${theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'} rounded-full transition z-10`} 
+            className={` max-[1024px]:w-full px-6 py-2 max-[1024px]:mb-3.5 border ${theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'} rounded-full transition z-10`} 
             onClick={() => navigate('/book-demo')}
           >
             {t('Homepage.hero.bookDemo')}
@@ -29,7 +29,7 @@ const Hero = ({ theme }) => {
           
           <button 
             onClick={() => window.open('https://app.gowhats.in', '_blank')}
-            className={`px-6 py-2 z-10 border ${theme === 'light' ? 'bg-black text-white hover:bg-white hover:text-black hover:border-black' : 'bg-white text-black hover:bg-black hover:text-white hover:border-white'} rounded-full transition`}
+            className={`max-[1024px]:w-full px-6 py-2 z-10 border ${theme === 'light' ? 'bg-black text-white hover:bg-white hover:text-black hover:border-black' : 'bg-white text-black hover:bg-black hover:text-white hover:border-white'} rounded-full transition`}
           >
             {t('Homepage.hero.startFree')}
           </button>
