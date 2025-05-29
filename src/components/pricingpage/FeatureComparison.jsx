@@ -1,22 +1,25 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Check, X } from 'lucide-react';
 
-const features = [
-  { name: 'Unlimited Broadcast', freeTrial: true, basic: true, custom: true },
-  { name: 'Website Interaction', freeTrial: true, basic: true, custom: true },
-  { name: 'F3 Engine', freeTrial: true, basic: true, custom: true },
-  { name: 'Inventory Management', freeTrial: true, basic: true, custom: true },
-  { name: 'Order Automation', freeTrial: false, basic: true, custom: true },
-  { name: 'Appointment Booking', freeTrial: false, basic: true, custom: true },
-  { name: 'Printing & Tracking', freeTrial: false, basic: true, custom: true },
-  { name: 'Auto Correction', freeTrial: false, basic: true, custom: true },
-  { name: 'Custom Integrations', freeTrial: false, basic: false, custom: true },
-  { name: 'Priority Support', freeTrial: false, basic: false, custom: true }
-];
-
 const FeatureComparison = ({theme}) => {
+  const { t } = useTranslation();
+
+  const features = [
+    { key: 'unlimitedBroadcast', freeTrial: true, basic: true, custom: true },
+    { key: 'websiteInteraction', freeTrial: true, basic: true, custom: true },
+    { key: 'f3Engine', freeTrial: true, basic: true, custom: true },
+    { key: 'inventoryManagement', freeTrial: true, basic: true, custom: true },
+    { key: 'orderAutomation', freeTrial: false, basic: true, custom: true },
+    { key: 'appointmentBooking', freeTrial: false, basic: true, custom: true },
+    { key: 'printingTracking', freeTrial: false, basic: true, custom: true },
+    { key: 'autoCorrection', freeTrial: false, basic: true, custom: true },
+    { key: 'customIntegrations', freeTrial: false, basic: false, custom: true },
+    { key: 'prioritySupport', freeTrial: false, basic: false, custom: true }
+  ];
+
   return (
     <motion.section 
       className="py-16 px-5"
@@ -32,7 +35,7 @@ const FeatureComparison = ({theme}) => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        Feature Comparison
+        {t('pricingpage.FeatureComparison.title')}
       </motion.h2>
       
       <motion.div 
@@ -46,16 +49,16 @@ const FeatureComparison = ({theme}) => {
           <thead className="bg-gray-100">
             <tr>
               <th scope="col" className="py-6 px-6 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
-                Feature
+                {t('pricingpage.FeatureComparison.tableHeaders.feature')}
               </th>
               <th scope="col" className="py-6 px-6 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
-                Free Trial
+                {t('pricingpage.FeatureComparison.tableHeaders.freeTrial')}
               </th>
               <th scope="col" className="py-6 px-6 text-center text-sm font-semibold text-blue-700 uppercase tracking-wider bg-blue-50">
-                Basic Plan
+                {t('pricingpage.FeatureComparison.tableHeaders.basicPlan')}
               </th>
               <th scope="col" className="py-6 px-6 text-center text-sm font-semibold text-purple-700 uppercase tracking-wider">
-                Custom Plan
+                {t('pricingpage.FeatureComparison.tableHeaders.customPlan')}
               </th>
             </tr>
           </thead>
@@ -70,7 +73,7 @@ const FeatureComparison = ({theme}) => {
                 className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
               >
                 <td className="py-4 px-6 text-sm font-medium text-gray-900">
-                  {feature.name}
+                  {t(`pricingpage.FeatureComparison.features.${feature.key}`)}
                 </td>
                 <td className="py-4 px-6 text-center">
                   {feature.freeTrial ? (

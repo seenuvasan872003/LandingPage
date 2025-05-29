@@ -1,7 +1,9 @@
 import React from 'react';
 import { Star, BarChart2, Activity, Zap, Image, Compass, Map, PieChart, Heart, Cpu, Database, Cloud, Globe, Shield } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const LogoShowcase = ({ theme }) => {
+  const { t } = useTranslation();
   // Reusable logo component
   const Logo = ({ icon, text, color = "text-gray-400" }) => (
     <div className="mx-8 transition-all duration-300 hover:scale-110 cursor-pointer group">
@@ -69,7 +71,7 @@ const LogoShowcase = ({ theme }) => {
     <div className={`py-16 overflow-hidden ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} mb-4 my-2.5`}>
       <div className="container mx-auto mb-12 px-4 text-center">
         <h2 className={`text-2xl sm:text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'} mb-1`}>
-          Trusted by 5000+ brands across 40+ countries
+          {t('Homepage.logoShowcase.title')}
         </h2>
       </div>
 

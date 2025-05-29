@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import PricingCard from './PricingCard';
 import { MessageSquare, Settings, Target } from 'lucide-react';
 
 const PricingSection = ({ theme }) => {
+  const { t } = useTranslation();
   const [billingCycle, setBillingCycle] = useState('monthly');
 
   const container = {
@@ -28,7 +30,7 @@ const PricingSection = ({ theme }) => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        Find the Perfect Plan for Your Business
+        {t('pricingpage.PricingSection.title')}
       </motion.h2>
 
       <motion.div 
@@ -52,7 +54,7 @@ const PricingSection = ({ theme }) => {
                 : 'text-gray-300'
             }`}
           >
-            Monthly
+            {t('pricingpage.PricingSection.billingCycle.monthly')}
           </button>
           <button
             onClick={() => setBillingCycle('yearly')}
@@ -66,7 +68,7 @@ const PricingSection = ({ theme }) => {
                 : 'text-gray-300'
             }`}
           >
-            Yearly
+            {t('pricingpage.PricingSection.billingCycle.yearly')}
           </button>
         </div>
       </motion.div>
@@ -79,19 +81,13 @@ const PricingSection = ({ theme }) => {
         viewport={{ once: true }}
       >
         <PricingCard
-          title="Free Trial"
+          title={t('pricingpage.PricingSection.plans.freeTrial.title')}
           price={{ monthly: "$0", yearly: "$0" }}
-          period="90 days"
-          description="Perfect for testing our platform"
+          period={t('pricingpage.PricingSection.plans.freeTrial.period')}
+          description={t('pricingpage.PricingSection.plans.freeTrial.description')}
           icon={<MessageSquare className="h-8 w-8 text-green-500" />}
-          features={[
-            "Unlimited message broadcasting",
-            "Website-wide interaction",
-            "F3 Engine support",
-            "Inventory management",
-            "90-day access"
-          ]}
-          ctaText="Start Free Trial"
+          features={t('pricingpage.PricingSection.plans.freeTrial.features', { returnObjects: true })}
+          ctaText={t('pricingpage.PricingSection.plans.freeTrial.ctaText')}
           ctaColor={`${theme === 'light' ? 'bg-black hover:bg-gray-800 text-white' : 'bg-white hover:bg-gray-100 text-black'}`}
           popular={false}
           theme={theme}
@@ -99,23 +95,19 @@ const PricingSection = ({ theme }) => {
         />
         
         <PricingCard
-          title="Basic Plan"
+          title={t('pricingpage.PricingSection.plans.basic.title')}
           price={{
             monthly: "₹1,999",
             yearly: "₹19,990"
           }}
-          period={billingCycle === 'monthly' ? 'month' : 'year'}
-          description="Essential features for growing businesses"
+          period={billingCycle === 'monthly' 
+            ? t('pricingpage.PricingSection.plans.basic.period.monthly') 
+            : t('pricingpage.PricingSection.plans.basic.period.yearly')
+          }
+          description={t('pricingpage.PricingSection.plans.basic.description')}
           icon={<Settings className="h-8 w-8 text-green-500" />}
-          features={[
-            "Unlimited message broadcasting",
-            "Order automation",
-            "Appointment booking",
-            "Invoice printing",
-            "Order tracking",
-            "Hold and auto-correction system"
-          ]}
-          ctaText="Get Started"
+          features={t('pricingpage.PricingSection.plans.basic.features', { returnObjects: true })}
+          ctaText={t('pricingpage.PricingSection.plans.basic.ctaText')}
           ctaColor="bg-green-500 hover:bg-green-600 text-white"
           popular={true}
           theme={theme}
@@ -123,23 +115,16 @@ const PricingSection = ({ theme }) => {
         />
         
         <PricingCard
-          title="Custom Plan"
+          title={t('pricingpage.PricingSection.plans.custom.title')}
           price={{
             monthly: "Custom",
             yearly: "Custom"
           }}
-          period="based on needs"
-          description="Tailored solutions for your business"
+          period={t('pricingpage.PricingSection.plans.custom.period')}
+          description={t('pricingpage.PricingSection.plans.custom.description')}
           icon={<Target className="h-8 w-8 text-green-500" />}
-          features={[
-            "Tailored features",
-            "Full customization",
-            "Integration with existing tools",
-            "Priority support",
-            "Dedicated account manager",
-            "Custom API development"
-          ]}
-          ctaText="Contact Sales"
+          features={t('pricingpage.PricingSection.plans.custom.features', { returnObjects: true })}
+          ctaText={t('pricingpage.PricingSection.plans.custom.ctaText')}
           ctaColor={`${theme === 'light' ? 'bg-black hover:bg-gray-800 text-white' : 'bg-white hover:bg-gray-100 text-black'}`}
           popular={false}
           theme={theme}

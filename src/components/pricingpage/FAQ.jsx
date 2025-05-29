@@ -2,32 +2,34 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-
-const faqs = [
-  {
-    question: 'What happens if I exceed my message limit?',
-    answer: 'You will be charged ₹0.10 per extra message or can upgrade to a higher plan.'
-  },
-  {
-    question: 'Do I need a WhatsApp Business Account?',
-    answer: 'Yes, it\'s required for integration.'
-  },
-  {
-    question: 'Can I cancel or switch plans anytime?',
-    answer: 'Yes, plans are flexible and cancellable anytime.'
-  },
-  {
-    question: 'Is there a free trial?',
-    answer: 'Yes, 90 days of full access.'
-  },
-  {
-    question: 'Are there discounts for NGOs or students?',
-    answer: 'Yes, reach out to our sales team.'
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 const FAQ = ({ theme }) => {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(null);
+  
+  const faqs = [
+    {
+      question: t('pricingpage.FAQ.questions.messageLimitExceed.question'),
+      answer: t('pricingpage.FAQ.questions.messageLimitExceed.answer')
+    },
+    {
+      question: t('pricingpage.FAQ.questions.whatsappBusiness.question'),
+      answer: t('pricingpage.FAQ.questions.whatsappBusiness.answer')
+    },
+    {
+      question: t('pricingpage.FAQ.questions.cancelSwitch.question'),
+      answer: t('pricingpage.FAQ.questions.cancelSwitch.answer')
+    },
+    {
+      question: t('pricingpage.FAQ.questions.freeTrial.question'),
+      answer: t('pricingpage.FAQ.questions.freeTrial.answer')
+    },
+    {
+      question: t('pricingpage.FAQ.questions.discounts.question'),
+      answer: t('pricingpage.FAQ.questions.discounts.answer')
+    }
+  ];
   
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -48,7 +50,7 @@ const FAQ = ({ theme }) => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        Frequently Asked Questions
+        {t('pricingpage.FAQ.title')}
       </motion.h2>
       
       <motion.div 

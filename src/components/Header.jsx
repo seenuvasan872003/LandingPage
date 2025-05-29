@@ -2,14 +2,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Globe, Menu, X } from 'lucide-react';
+import { MessageSquare, Globe, Menu, X, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import ThemeToggle from './ThemeToggle';
 
 export default function Header({ theme, setTheme }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
 
   useEffect(() => {
@@ -18,12 +21,22 @@ export default function Header({ theme, setTheme }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const switchLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    setIsLanguageMenuOpen(false);
+  };
+
   const navItems = [
-    { name: "Resources", path: '/resources' },
-    { name: "Integration", path: '/integration' },
-    { name: "Documentation", path: '/documentation' },
-    { name: "Blog", path: '/blog' },
-    { name: "Pricing", path: '/price' },
+    { name: t('nav.resources'), path: '/resources' },
+    { name: t('nav.integration'), path: '/integration' },
+    { name: t('nav.documentation'), path: '/documentation' },
+    { name: t('nav.blog'), path: '/blog' },
+    { name: t('nav.pricing'), path: '/price' },
+  ];
+
+  const languages = [
+    { code: 'en', name: t('nav.english') },
+    { code: 'ta', name: t('nav.tamil') }
   ];
 
   return (
@@ -109,17 +122,47 @@ export default function Header({ theme, setTheme }) {
                 {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </motion.button>
 
-              {/* Theme Toggle - Add to RIGHT SIDE before language icon */}
+              {/* Theme Toggle - Desktop */}
               <div className="hidden md:block">
                 <ThemeToggle theme={theme} setTheme={setTheme} />
               </div>
 
-              {/* Language Globe Icon - RIGHT SIDE */}
-              <div
-                className={`md:flex hidden items-center ${theme === 'light' ? 'text-black' : 'text-white'} hover:text-[#25D366] cursor-pointer`}
-                onClick={() => alert("Language selector coming soon!")}
-              >
-                <Globe className="h-5 w-5" />
+              {/* Language Dropdown - Desktop */}
+              <div className="hidden md:block relative">
+                <button
+                  onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+                  className={`flex items-center space-x-1 ${theme === 'light' ? 'text-black' : 'text-white'} hover:text-[#25D366] cursor-pointer transition-colors`}
+                >
+                  <Globe className="h-5 w-5" />
+                  {/* <ChevronDown className="h-4 w-4" /> */}
+                </button>
+
+                {/* Language Dropdown Menu */}
+                <AnimatePresence>
+                  {isLanguageMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className={`absolute right-0 top-full mt-2 w-32 rounded-md shadow-lg ${
+                        theme === 'light' ? 'bg-white border border-gray-200' : 'bg-gray-800 border border-gray-700'
+                      } z-50`}
+                    >
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => switchLanguage(lang.code)}
+                          className={`w-full text-left px-4 py-2 text-sm hover:text-[#25D366] transition-colors ${
+                            i18n.language === lang.code ? 'text-[#25D366]' : 
+                            theme === 'light' ? 'text-black hover:bg-gray-50' : 'text-white hover:bg-gray-700'
+                          }`}
+                        >
+                          {lang.name}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
 
@@ -147,7 +190,7 @@ export default function Header({ theme, setTheme }) {
                       navigate(item.path);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`z-50 text-sm font-medium transition-colors hover:text-[#25D366] ${
+                    className={`text-left text-sm font-medium transition-colors hover:text-[#25D366] ${
                       location.pathname === item.path ? 'text-[#25D366]' : 
                       theme === 'light' ? 'text-black' : 'text-white'
                     }`}
@@ -159,15 +202,66 @@ export default function Header({ theme, setTheme }) {
                 {/* Theme Toggle in Mobile Menu */}
                 <div className="flex items-center justify-between py-2">
                   <span className={`text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}>
-                    {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                    {theme === 'dark' ? t('nav.darkMode') : t('nav.lightMode')}
                   </span>
                   <ThemeToggle theme={theme} setTheme={setTheme} />
+                </div>
+
+                {/* Language Selection in Mobile Menu */}
+                <div className="py-2">
+                  <div className="flex items-center justify-between">
+                    <span className={`text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+                      {languages.find(lang => lang.code === i18n.language)?.name || t('nav.languageChange')}
+                    </span>
+                    <button
+                      onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+                      className={`${theme === 'light' ? 'text-black' : 'text-white'} hover:text-[#25D366] cursor-pointer transition-colors`}
+                    >
+                      <Globe className="h-5 w-5" />
+                    </button>
+                  </div>
+                  
+                  {/* Mobile Language Dropdown */}
+                  <AnimatePresence>
+                    {isLanguageMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="mt-2 ml-4 space-y-2"
+                      >
+                        {languages.map((lang) => (
+                          <button
+                            key={lang.code}
+                            onClick={() => {
+                              switchLanguage(lang.code);
+                              setIsLanguageMenuOpen(false);
+                            }}
+                            className={`block text-left text-sm w-full transition-colors hover:text-[#25D366] ${
+                              i18n.language === lang.code ? 'text-[#25D366]' : 
+                              theme === 'light' ? 'text-black' : 'text-white'
+                            }`}
+                          >
+                            {lang.name}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Click outside to close language menu */}
+      {isLanguageMenuOpen && (
+        <div
+          className="fixed inset-0 z-30"
+          onClick={() => setIsLanguageMenuOpen(false)}
+        />
+      )}
     </>
   );
 }

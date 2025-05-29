@@ -1,51 +1,53 @@
 import React from 'react';
 import { Bot, MessageSquare, Brain, Clock, Box } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 function AIChatDemo({ theme = 'dark' }) {
+  const { t, i18n } = useTranslation();
+
   const messages = [
-    { id: 1, text: "Hey! How can I help you today?", isUser: false, timestamp: "9:41 AM" },
-    { id: 2, text: "I need help with my recent order", isUser: true, timestamp: "9:42 AM" },
-    { id: 3, text: "Of course! Could you please provide your order number?", isUser: false, timestamp: "9:42 AM" },
-    { id: 4, text: "#ORD-12345", isUser: true, timestamp: "9:43 AM" },
-    { id: 5, text: "Thank you! I can see your order for the wireless headphones. What specific help do you need?", isUser: false, timestamp: "9:43 AM" },
-    { id: 6, text: "I want to know the delivery status", isUser: true, timestamp: "9:44 AM" },
-    { id: 7, text: "Your order is currently out for delivery and should arrive by 5 PM today. Would you like me to send you the tracking link?", isUser: false, timestamp: "9:44 AM" },
+    { id: 1, text: t('Homepage.AIChatDemo.chat.messages.greeting'), isUser: false, timestamp: "9:41 AM" },
+    { id: 2, text: t('Homepage.AIChatDemo.chat.messages.orderHelp'), isUser: true, timestamp: "9:42 AM" },
+    { id: 3, text: t('Homepage.AIChatDemo.chat.messages.orderNumber'), isUser: false, timestamp: "9:42 AM" },
+    { id: 4, text: t('Homepage.AIChatDemo.chat.messages.orderNumberReply'), isUser: true, timestamp: "9:43 AM" },
+    { id: 5, text: t('Homepage.AIChatDemo.chat.messages.orderDetails'), isUser: false, timestamp: "9:43 AM" },
+    { id: 6, text: t('Homepage.AIChatDemo.chat.messages.deliveryStatus'), isUser: true, timestamp: "9:44 AM" },
+    { id: 7, text: t('Homepage.AIChatDemo.chat.messages.deliveryInfo'), isUser: false, timestamp: "9:44 AM" },
   ];
 
   const features = [
     {
       icon: Box,
-      title: 'Natural Language Understanding',
-      description: 'Our AI understands customer queries in natural language and responds contextually.',
+      title: t('Homepage.AIChatDemo.features.naturalLanguage.title'),
+      description: t('Homepage.AIChatDemo.features.naturalLanguage.description'),
     },
     {
       icon: Brain,
-      title: 'Self-Improving',
-      description: 'The more conversations your AI agent has, the smarter it gets, continuously learning from interactions.',
+      title: t('Homepage.AIChatDemo.features.selfImproving.title'),
+      description: t('Homepage.AIChatDemo.features.selfImproving.description'),
     },
     {
       icon: MessageSquare,
-      title: 'Seamless Handoff',
-      description: 'When a query requires human intervention, the AI smoothly transfers the conversation to your team.',
+      title: t('Homepage.AIChatDemo.features.seamlessHandoff.title'),
+      description: t('Homepage.AIChatDemo.features.seamlessHandoff.description'),
     },
     {
       icon: Clock,
-      title: '24/7 Availability',
-      description: 'Never miss a customer inquiry with round-the-clock automated responses.',
+      title: t('Homepage.AIChatDemo.features.availability.title'),
+      description: t('Homepage.AIChatDemo.features.availability.description'),
     },
   ];
 
   return (
-    <div className={`min-h-screen ${theme === 'light' ? 'bg-white' : 'bg-black'} my-2.5`}>
+    <div className={`min-h-screen ${theme === 'light' ? 'bg-white' : 'bg-black'} pt-1.5 my-2.5`}>
       {/* Header Section */}
       <div className={`${theme === 'light' ? 'bg-white' : 'bg-black'} ${theme === 'light' ? 'text-black' : 'text-white'} py-6 px-4 sm:px-6 lg:px-8`}>
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className={`text-3xl font-bold mb-3 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
-            AI That Talks to Your Customers 24/7
+          <h1 className={` ${ i18n.language === 'ta'  ? 'text-2xl'  : 'text-3xl'} font-bold mb-3 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+            {t('Homepage.AIChatDemo.hero.title')}
           </h1>
           <p className={`text-lg ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
-            Our intelligent chatbot understands customer needs and provides fast, accurate
-            responses automatically.
+            {t('Homepage.AIChatDemo.hero.subtitle')}
           </p>
         </div>
       </div>
@@ -76,7 +78,7 @@ function AIChatDemo({ theme = 'dark' }) {
               <div className="p-1.5 rounded-full bg-black mr-2">
                 <Bot className="h-5 w-5 text-green-400" />
               </div>
-              <h3 className="text-lg font-medium text-white">AI Support</h3>
+              <h3 className="text-lg font-medium text-white">{t('Homepage.AIChatDemo.chat.title')}</h3>
             </div>
 
             {/* Chat Messages */}
@@ -109,7 +111,7 @@ function AIChatDemo({ theme = 'dark' }) {
               <div className="flex items-center">
                 <input
                   type="text"
-                  placeholder="Type a message..."
+                  placeholder={t('Homepage.AIChatDemo.chat.placeholder')}
                   className="flex-1 rounded-full px-3 py-1.5 bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-green-500"
                 />
                 <button className="ml-2 p-1.5 rounded-full bg-green-600 text-white hover:bg-green-700">

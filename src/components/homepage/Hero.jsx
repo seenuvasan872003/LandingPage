@@ -1,35 +1,37 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AnimationContainer from './AnimationContainer.jsx';
+import { useTranslation } from 'react-i18next';
 
 const Hero = ({ theme }) => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   
   return (
     <div className={`flex-grow grid md:grid-cols-2 grid-cols-1 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} py-20 justify-center items-center`}>
       {/* Left Column - Text Content */}
-      <div className={`flex flex-col justify-center px-6 md:px-10 lg:px-16 py-16 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} text-center md:text-left`}>
-        <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'} leading-tight mb-6`}>
-          <span className="md:block mr-2  inline">Automate your</span>
-          <span className="md:block px-1 inline">business with</span>
-          <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent inline md:block ml-2">WhatsApp API!</span>
+      <div className={`flex flex-col w-full justify-center px-6 md:px-10 lg:px-16 py-16 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} text-center md:text-left`}>
+        <h1 className={`w-full font-bold ${theme === 'light' ? 'text-black' : 'text-white'} ${ i18n.language === 'ta'  ? 'text-2xl md:text-3xl lg:text-4xl'  : 'text-4xl md:text-5xl lg:text-6xl'} leading-tight mb-6`}>
+          <span className={`mr-2 ${ i18n.language === 'ta'  ? 'block'  : 'md:block inline '} `}>{t('Homepage.hero.title1')}</span>
+          <span className={`px-1 ${ i18n.language === 'ta'  ? 'block'  : 'md:block inline '}`}>{t('Homepage.hero.title2')}</span>
+          <span className={`bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent ml-2 ${ i18n.language === 'ta'  ? 'block'  : 'md:block inline '}`}>{t('Homepage.hero.title3')}</span>
         </h1>
         <p className="text-lg text-gray-400 mb-10 max-w-lg text-center md:text-left">
-          Engage customers, streamline support, and boost sales with our powerful WhatsApp Business API integration platform.
+          {t('Homepage.hero.description')}
         </p>
         <div className="flex space-x-4 justify-center md:justify-start">
           <button 
             className={`px-6 py-2 border ${theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white' : 'border-white text-white hover:bg-white hover:text-black'} rounded-full transition z-10`} 
             onClick={() => navigate('/book-demo')}
           >
-            Book a demo
+            {t('Homepage.hero.bookDemo')}
           </button>
           
           <button 
             onClick={() => window.open('https://app.gowhats.in', '_blank')}
             className={`px-6 py-2 z-10 border ${theme === 'light' ? 'bg-black text-white hover:bg-white hover:text-black hover:border-black' : 'bg-white text-black hover:bg-black hover:text-white hover:border-white'} rounded-full transition`}
           >
-            Start for free
+            {t('Homepage.hero.startFree')}
           </button>
         </div>
       </div>

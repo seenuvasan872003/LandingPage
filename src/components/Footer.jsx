@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { MessageSquare, Facebook, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer({ theme = 'dark' }) {
+  const { t } = useTranslation();
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -23,6 +26,22 @@ export default function Footer({ theme = 'dark' }) {
     }
   };
 
+  const quickLinksItems = [
+    { key: 'aboutUs', label: t('footer.aboutUs') },
+    { key: 'features', label: t('footer.features') },
+    { key: 'pricing', label: t('footer.pricing') },
+    { key: 'blog', label: t('footer.blog') },
+    { key: 'contact', label: t('footer.contact') }
+  ];
+
+  const resourcesItems = [
+    { key: 'documentation', label: t('footer.documentation') },
+    { key: 'apiReference', label: t('footer.apiReference') },
+    { key: 'tutorials', label: t('footer.tutorials') },
+    { key: 'caseStudies', label: t('footer.caseStudies') },
+    { key: 'support', label: t('footer.support') }
+  ];
+
   return (
     <footer className={`${theme === 'light' ? 'bg-white' : 'bg-black'} ${theme === 'light' ? 'text-black' : 'text-white'} py-16`}>
       <motion.div 
@@ -40,7 +59,7 @@ export default function Footer({ theme = 'dark' }) {
               <span className="text-2xl font-bold">GoWhats</span>
             </div>
             <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
-              Transform your business with our powerful WhatsApp API solution.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               <motion.a whileHover={{ scale: 1.2 }} href="#" className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} hover:text-[#25D366]`}>
@@ -60,15 +79,15 @@ export default function Footer({ theme = 'dark' }) {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2">
-              {['About Us', 'Features', 'Pricing', 'Blog', 'Contact'].map((item) => (
+              {quickLinksItems.map((item) => (
                 <motion.li 
-                  key={item}
+                  key={item.key}
                   whileHover={{ x: 5 }}
                   className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} hover:text-[#25D366] cursor-pointer`}
                 >
-                  {item}
+                  {item.label}
                 </motion.li>
               ))}
             </ul>
@@ -76,15 +95,15 @@ export default function Footer({ theme = 'dark' }) {
 
           {/* Resources */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold">Resources</h3>
+            <h3 className="text-lg font-semibold">{t('footer.resources')}</h3>
             <ul className="space-y-2">
-              {['Documentation', 'API Reference', 'Tutorials', 'Case Studies', 'Support'].map((item) => (
+              {resourcesItems.map((item) => (
                 <motion.li 
-                  key={item}
+                  key={item.key}
                   whileHover={{ x: 5 }}
                   className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} hover:text-[#25D366] cursor-pointer`}
                 >
-                  {item}
+                  {item.label}
                 </motion.li>
               ))}
             </ul>
@@ -92,12 +111,14 @@ export default function Footer({ theme = 'dark' }) {
 
           {/* Newsletter */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold">Newsletter</h3>
-            <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Subscribe to our newsletter for updates and tips.</p>
+            <h3 className="text-lg font-semibold">{t('footer.newsletter')}</h3>
+            <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+              {t('footer.newsletterDescription')}
+            </p>
             <div className="flex space-x-2">
               <input 
                 type="email" 
-                placeholder="Enter your email"
+                placeholder={t('footer.emailPlaceholder')}
                 className={`flex-1 p-2 rounded border ${theme === 'light' ? 'border-green-400' : 'border-green-400'} focus:outline-none focus:ring-2 focus:ring-green-500 ${theme === 'light' ? 'text-black' : 'text-black'}`}
                 aria-label="Email"
               />
@@ -112,7 +133,7 @@ export default function Footer({ theme = 'dark' }) {
           variants={itemVariants}
           className={`mt-12 pt-8 text-center ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}
         >
-          <p>&copy; {new Date().getFullYear()} GoWhats. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} GoWhats. {t('footer.copyright')}</p>
         </motion.div>
       </motion.div>
     </footer>

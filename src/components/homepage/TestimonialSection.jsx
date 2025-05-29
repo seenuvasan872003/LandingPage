@@ -2,34 +2,11 @@
 import React, { useState, useRef } from 'react';
 import { Star, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import TestimonialCard from './TestimonialCard'; 
 
-// const TestimonialCard = ({ quote, name, company, rating, profileImage, theme, index }) => {
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0, y: 20 }}
-//       whileInView={{ opacity: 1, y: 0 }}
-//       transition={{ delay: index * 0.1 }}
-//       className={`rounded-2xl p-6 shadow-lg border ${theme === 'light' ? 'bg-white border-gray-200' : 'bg-zinc-900 border-zinc-700'}`}
-//     >
-//       <div className="flex items-center gap-4 mb-4">
-//         <img src={profileImage} alt={name} className="w-12 h-12 rounded-full object-cover" />
-//         <div>
-//           <h4 className={`font-semibold ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>{name}</h4>
-//           <p className={`text-sm ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>{company}</p>
-//         </div>
-//       </div>
-//       <div className="flex gap-1 mb-3">
-//         {[1, 2, 3, 4, 5].map((star) => (
-//           <Star key={star} className={`w-5 h-5 ${star <= rating ? 'text-green-500 fill-green-500' : theme === 'light' ? 'text-gray-300' : 'text-zinc-600'}`} />
-//         ))}
-//       </div>
-//       <p className={`${theme === 'light' ? 'text-gray-800' : 'text-gray-300'}`}>{quote}</p>
-//     </motion.div>
-//   );
-// };
-
 const TestimonialSection = ({ theme = 'dark' }) => {
+  const { t, i18n } = useTranslation();
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [formData, setFormData] = useState({ name: '', company: '', review: '', rating: 0 });
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -58,50 +35,49 @@ const TestimonialSection = ({ theme = 'dark' }) => {
     </span>
   );
 
-  const testimonials = [
-    {
-      quote: <>Overall <Highlight>we are very happy with the reliability</Highlight> and general service. We use this to communicate with our customers and automate their requests over WhatsApp.</>,
-      name: "Dan M.",
-      company: "TechSolutions",
-      rating: 5,
-      profileImage: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
-    },
-    {
-      quote: <>Good and <Highlight>affordable alternative to official WhatsApp Business API</Highlight>. Uptime is good compared to similar services.</>,
-      name: "Ranjid E.",
-      company: "GlobalConnect",
-      rating: 4,
-      profileImage: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
-    },
-    {
-      quote: <><Highlight>Great tool to send marketing campaigns over WhatsApp</Highlight>, would recommend for anyone in need of a reliable WhatsApp API.</>,
-      name: "Sarah W.",
-      company: "DevSync",
-      rating: 5,
-      profileImage: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
-    },
-    {
-      quote: <>The <Highlight>integration was seamless</Highlight> and the documentation is top-notch. Our team was able to implement WhatsApp messaging features in record time.</>,
-      name: "Leon T.",
-      company: "BrightApps",
-      rating: 4,
-      profileImage: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"
-    },
-    {
-      quote: <><Highlight>Customer support is exceptional</Highlight>. Any issues we encountered were resolved quickly, and the team is always responsive.</>,
-      name: "Aisha K.",
-      company: "SnapTech",
-      rating: 5,
-      profileImage: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
-    },
-    {
-      quote: <>The <Highlight>analytics dashboard</Highlight> provides valuable insights into our messaging campaigns. It's been crucial for optimizing our communication strategy.</>,
-      name: "James L.",
-      company: "AppVibe",
-      rating: 5,
-      profileImage: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
-    },
-  ];
+  // Get testimonials from translation with highlights
+  const getTestimonials = () => {
+    const testimonialData = t('Homepage.TestimonialSection.testimonials', { returnObjects: true });
+    
+    return testimonialData.map((testimonial, index) => {
+      const profileImages = [
+        "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg",
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
+        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg",
+        "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
+        "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
+      ];
+
+      const ratings = [5, 4, 5, 4, 5, 5];
+
+      // Create quote with highlight
+      const quote = testimonial.quote;
+      const highlight = testimonial.highlight;
+      
+      const createQuoteWithHighlight = () => {
+        if (quote.includes(highlight)) {
+          const parts = quote.split(highlight);
+          return (
+            <>
+              {parts[0]}<Highlight>{highlight}</Highlight>{parts[1]}
+            </>
+          );
+        }
+        return quote;
+      };
+
+      return {
+        quote: createQuoteWithHighlight(),
+        name: testimonial.name,
+        company: testimonial.company,
+        rating: ratings[index],
+        profileImage: profileImages[index]
+      };
+    });
+  };
+
+  const testimonials = getTestimonials();
 
   const inputStyle = theme === 'light'
     ? 'bg-gray-100 border-gray-300 text-gray-800'
@@ -120,15 +96,24 @@ const TestimonialSection = ({ theme = 'dark' }) => {
               <Star key={i} className="w-6 h-6 text-green-500 fill-green-500" />
             ))}
           </div>
-          <h2 className={`text-4xl md:text-6xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>See <Highlight>why</Highlight> our customers are excited</h2>
-          <p className={`text-xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} mt-4`}>Trusted by 5,000+ developers worldwide to elevate their apps with WhatsApp integration</p>
+          <h2 className={` ${ i18n.language === 'ta'  ? 'text-2xl md:text-5xl'  : 'text-4xl md:text-6xl'} font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
+            {t('Homepage.TestimonialSection.header.title').split(t('Homepage.TestimonialSection.header.highlightWord')).map((part, index, array) => (
+              <React.Fragment key={index}>
+                {part}
+                {index < array.length - 1 && <Highlight>{t('Homepage.TestimonialSection.header.highlightWord')}</Highlight>}
+              </React.Fragment>
+            ))}
+          </h2>
+          <p className={`text-xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} mt-4`}>
+            {t('Homepage.TestimonialSection.header.subtitle')}
+          </p>
         </motion.div>
 
         {!isFormVisible ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {testimonials.map((t, i) => (
-                <TestimonialCard key={i} {...t} theme={theme} index={i} />
+              {testimonials.map((testimonial, i) => (
+                <TestimonialCard key={i} {...testimonial} theme={theme} index={i} />
               ))}
             </div>
             <div className="flex justify-center mt-12">
@@ -141,9 +126,8 @@ const TestimonialSection = ({ theme = 'dark' }) => {
                 }}
                 className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 shadow-lg shadow-green-500/20"
               >
-                Share Your Experience
+                {t('Homepage.TestimonialSection.button.shareExperience')}
               </button>
-
             </div>
           </>
         ) : (
@@ -152,11 +136,13 @@ const TestimonialSection = ({ theme = 'dark' }) => {
               onClick={() => setIsFormVisible(false)}
               className="flex items-center text-green-500 hover:text-green-400 mb-8"
             >
-              <ArrowLeft className="w-5 h-5 mr-2" /> Back to Reviews
+              <ArrowLeft className="w-5 h-5 mr-2" /> {t('Homepage.TestimonialSection.button.backToReviews')}
             </button>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className={`block mb-1 font-medium ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>Your Name</label>
+                <label className={`block mb-1 font-medium ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
+                  {t('Homepage.TestimonialSection.form.labels.name')}
+                </label>
                 <input
                   ref={nameInputRef}
                   type="text"
@@ -167,7 +153,9 @@ const TestimonialSection = ({ theme = 'dark' }) => {
                 />
               </div>
               <div>
-                <label className={`block mb-1 font-medium ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>Company Name</label>
+                <label className={`block mb-1 font-medium ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
+                  {t('Homepage.TestimonialSection.form.labels.company')}
+                </label>
                 <input
                   type="text"
                   name="company"
@@ -177,7 +165,9 @@ const TestimonialSection = ({ theme = 'dark' }) => {
                 />
               </div>
               <div>
-                <label className={`block mb-1 font-medium ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>Rating</label>
+                <label className={`block mb-1 font-medium ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
+                  {t('Homepage.TestimonialSection.form.labels.rating')}
+                </label>
                 <div className="flex gap-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
@@ -193,7 +183,9 @@ const TestimonialSection = ({ theme = 'dark' }) => {
                 </div>
               </div>
               <div>
-                <label className={`block mb-1 font-medium ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>Your Review</label>
+                <label className={`block mb-1 font-medium ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
+                  {t('Homepage.TestimonialSection.form.labels.review')}
+                </label>
                 <textarea
                   name="review"
                   value={formData.review}
@@ -206,7 +198,7 @@ const TestimonialSection = ({ theme = 'dark' }) => {
                 type="submit"
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg shadow-green-500/20"
               >
-                Submit Review
+                {t('Homepage.TestimonialSection.button.submitReview')}
               </button>
             </form>
           </motion.div>

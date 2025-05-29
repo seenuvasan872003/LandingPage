@@ -2,31 +2,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Clock, UserCheck, Layers } from 'lucide-react';
-
-const features = [
-  {
-    icon: <Code className="h-6 w-6 text-green-500" />,
-    title: 'Dedicated API Support',
-    description: 'Custom API development and integration support'
-  },
-  {
-    icon: <Clock className="h-6 w-6 text-green-500" />,
-    title: 'SLA-backed Uptime',
-    description: 'Guaranteed 99.9% uptime with service credits'
-  },
-  {
-    icon: <UserCheck className="h-6 w-6 text-green-500" />,
-    title: 'Account Manager',
-    description: 'Dedicated point of contact for your business'
-  },
-  {
-    icon: <Layers className="h-6 w-6 text-green-500" />,
-    title: 'Custom Integrations',
-    description: 'Integration with your existing business tools'
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 const Enterprise = ({ theme }) => {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: <Code className="h-6 w-6 text-green-500" />,
+      title: t('pricingpage.Enterprise.features.apiSupport.title'),
+      description: t('pricingpage.Enterprise.features.apiSupport.description')
+    },
+    {
+      icon: <Clock className="h-6 w-6 text-green-500" />,
+      title: t('pricingpage.Enterprise.features.uptime.title'),
+      description: t('pricingpage.Enterprise.features.uptime.description')
+    },
+    {
+      icon: <UserCheck className="h-6 w-6 text-green-500" />,
+      title: t('pricingpage.Enterprise.features.accountManager.title'),
+      description: t('pricingpage.Enterprise.features.accountManager.description')
+    },
+    {
+      icon: <Layers className="h-6 w-6 text-green-500" />,
+      title: t('pricingpage.Enterprise.features.integrations.title'),
+      description: t('pricingpage.Enterprise.features.integrations.description')
+    }
+  ];
+
   return (
     <motion.section 
       className="py-16 px-5"
@@ -50,7 +53,7 @@ const Enterprise = ({ theme }) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                Enterprise Plan
+                {t('pricingpage.Enterprise.title')}
               </motion.h2>
               
               <motion.p 
@@ -62,7 +65,7 @@ const Enterprise = ({ theme }) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Need custom volume or advanced integrations? We'll tailor a plan for your business.
+                {t('pricingpage.Enterprise.description')}
               </motion.p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -107,12 +110,12 @@ const Enterprise = ({ theme }) => {
               }`}>
                 <h3 className={`text-xl font-semibold mb-4 ${
                   theme === 'light' ? 'text-black' : 'text-white'
-                }`}>Interested in Enterprise?</h3>
+                }`}>{t('pricingpage.Enterprise.contactCard.title')}</h3>
                 <p className={`mb-6 ${
                   theme === 'light' ? 'text-gray-600' : 'text-gray-300'
-                }`}>Get a custom quote tailored to your specific business requirements.</p>
+                }`}>{t('pricingpage.Enterprise.contactCard.description')}</p>
                 <button className={`w-full py-3 px-6 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition duration-300`}>
-                  Contact Sales
+                  {t('pricingpage.Enterprise.contactCard.button')}
                 </button>
               </div>
             </motion.div>

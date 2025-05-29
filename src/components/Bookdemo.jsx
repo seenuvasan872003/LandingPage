@@ -3,8 +3,11 @@ import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next';
 
 const BookDemo = ({ theme = 'dark' }) => {
+  const { t } = useTranslation();
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -90,7 +93,7 @@ const BookDemo = ({ theme = 'dark' }) => {
       setPeriod('AM');
       
       // Show success toast notification
-      toast.success('Your message has been sent successfully! Check your email for confirmation.', {
+      toast.success(t('bookDemo.toast.success'), {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -103,7 +106,7 @@ const BookDemo = ({ theme = 'dark' }) => {
       console.error('Failed to send email:', error);
       
       // Show error toast notification
-      toast.error('Failed to send your message. Please try again later.', {
+      toast.error(t('bookDemo.toast.error'), {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -122,25 +125,31 @@ const BookDemo = ({ theme = 'dark' }) => {
       {/* Header Section */}
       <div className="text-center mb-16">
         <h1 className={`text-6xl font-bold ${theme === 'light' ? 'bg-gradient-to-r from-gray-800 to-gray-600' : 'bg-gradient-to-r from-white to-gray-400'} bg-clip-text text-transparent mb-4`}>
-          Let's Talk!
+          {t('bookDemo.header.title')}
         </h1>
         <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} text-xl max-w-2xl mx-auto`}>
-          Have a question or idea? Drop us a message and we'll get back to you!
+          {t('bookDemo.header.subtitle')}
         </p>
       </div>
 
       <div className="flex flex-col lg:flex-row items-start justify-between gap-16">
         {/* Contact Info Section */}
         <div className={`lg:w-1/2 w-full animate-fade-in p-10 ${theme === 'light' ? 'bg-white/80' : 'bg-black/30'} backdrop-blur-md rounded-2xl border ${theme === 'light' ? 'border-gray-200' : 'border-white/10'} shadow-[0_0_15px_rgba(0,0,0,0.07)]`}>
-          <h2 className={`text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-8`}>Contact Information</h2>
+          <h2 className={`text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-8`}>
+            {t('bookDemo.contactInfo.title')}
+          </h2>
           <div className="space-y-8">
             <div className="flex items-center group">
               <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mr-4 group-hover:bg-emerald-500/20 transition-all duration-300">
                 <Phone className="text-emerald-400" size={20} />
               </div>
               <div>
-                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>+91 85240 89733</h3>
-                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Call or WhatsApp</p>
+                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>
+                  {t('bookDemo.contactInfo.phone.number')}
+                </h3>
+                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+                  {t('bookDemo.contactInfo.phone.label')}
+                </p>
               </div>
             </div>
             
@@ -149,8 +158,12 @@ const BookDemo = ({ theme = 'dark' }) => {
                 <Mail className="text-emerald-400" size={20} />
               </div>
               <div>
-                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>techvaseegrah@gmail.com</h3>
-                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Email Anytime</p>
+                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>
+                  {t('bookDemo.contactInfo.email.address')}
+                </h3>
+                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+                  {t('bookDemo.contactInfo.email.label')}
+                </p>
               </div>
             </div>
             
@@ -159,8 +172,12 @@ const BookDemo = ({ theme = 'dark' }) => {
                 <MapPin className="text-emerald-400" size={20} />
               </div>
               <div>
-                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>Thanjavur, Tamil Nadu</h3>
-                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Our HQ</p>
+                <h3 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} text-lg font-medium`}>
+                  {t('bookDemo.contactInfo.location.address')}
+                </h3>
+                <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+                  {t('bookDemo.contactInfo.location.label')}
+                </p>
               </div>
             </div>
           </div>
@@ -169,8 +186,12 @@ const BookDemo = ({ theme = 'dark' }) => {
         {/* Contact Form Section */}
         <div className="lg:w-1/2 w-full animate-slide-up">
           <div className={`w-full max-w-xl ${theme === 'light' ? 'bg-white/80' : 'bg-black/30'} backdrop-blur-md p-8 rounded-2xl border ${theme === 'light' ? 'border-gray-200' : 'border-white/10'} shadow-[0_0_15px_rgba(0,0,0,0.07)]`}>
-            <h2 className={`text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-6`}>Get in Touch</h2>
-            <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} mb-8`}>We're happy to hear from you.</p>
+            <h2 className={`text-3xl font-bold ${theme === 'light' ? 'text-gray-800' : 'text-white'} mb-6`}>
+              {t('bookDemo.form.title')}
+            </h2>
+            <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} mb-8`}>
+              {t('bookDemo.form.subtitle')}
+            </p>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -193,7 +214,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                       formData.firstName || focused === 'firstName' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                     }`}
                   >
-                    First Name
+                    {t('bookDemo.form.fields.firstName')}
                   </label>
                 </div>
                 
@@ -216,7 +237,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                       formData.lastName || focused === 'lastName' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                     }`}
                   >
-                    Last Name
+                    {t('bookDemo.form.fields.lastName')}
                   </label>
                 </div>
               </div>
@@ -239,7 +260,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                     formData.companyName || focused === 'companyName' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                   }`}
                 >
-                  Company Name
+                  {t('bookDemo.form.fields.companyName')}
                 </label>
               </div>
 
@@ -262,7 +283,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                     formData.email || focused === 'email' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                   }`}
                 >
-                  Email
+                  {t('bookDemo.form.fields.email')}
                 </label>
               </div>
 
@@ -284,7 +305,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                     formData.phone || focused === 'phone' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                   }`}
                 >
-                  Phone
+                  {t('bookDemo.form.fields.phone')}
                 </label>
               </div>
 
@@ -302,7 +323,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                     required
                   />
                   <label className={`absolute text-xs -top-2.5 left-4 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
-                    Date
+                    {t('bookDemo.form.fields.date')}
                   </label>
                 </div>
 
@@ -321,7 +342,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                       ))}
                     </select>
                     <label className={`absolute text-xs -top-2.5 left-4 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
-                      Hour
+                      {t('bookDemo.form.fields.hour')}
                     </label>
                   </div>
 
@@ -343,7 +364,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                       ))}
                     </select>
                     <label className={`absolute text-xs -top-2.5 left-4 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
-                      Min
+                      {t('bookDemo.form.fields.minute')}
                     </label>
                   </div>
 
@@ -352,13 +373,13 @@ const BookDemo = ({ theme = 'dark' }) => {
                       className={`flex-1 text-center py-2 rounded-l-lg cursor-pointer border ${theme === 'light' ? 'border-gray-300' : 'border-gray-700'} border-r-0 transition-all ${period === 'AM' ? 'bg-emerald-500/20 text-emerald-400' : `${theme === 'light' ? 'bg-gray-50' : 'bg-white/5'} ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}`}
                       onClick={() => setPeriod('AM')}
                     >
-                      AM
+                      {t('bookDemo.form.timePeriod.am')}
                     </div>
                     <div 
                       className={`flex-1 text-center py-2 rounded-r-lg cursor-pointer border ${theme === 'light' ? 'border-gray-300' : 'border-gray-700'} transition-all ${period === 'PM' ? 'bg-emerald-500/20 text-emerald-400' : `${theme === 'light' ? 'bg-gray-50' : 'bg-white/5'} ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}`}
                       onClick={() => setPeriod('PM')}
                     >
-                      PM
+                      {t('bookDemo.form.timePeriod.pm')}
                     </div>
                     <Clock size={16} className={`absolute right-3 top-3 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
                   </div>
@@ -384,7 +405,7 @@ const BookDemo = ({ theme = 'dark' }) => {
                     formData.message || focused === 'message' ? `text-xs -top-2.5 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'} px-1` : 'text-base top-3'
                   }`}
                 >
-                  Message
+                  {t('bookDemo.form.fields.message')}
                 </label>
               </div>
 
@@ -394,10 +415,10 @@ const BookDemo = ({ theme = 'dark' }) => {
                 disabled={loading}
               >
                 {loading ? (
-                  <span>Sending...</span>
+                  <span>{t('bookDemo.form.submitButton.loading')}</span>
                 ) : (
                   <>
-                    <span>Send Message</span>
+                    <span>{t('bookDemo.form.submitButton.default')}</span>
                     <Send size={18} className="inline-block transition-transform duration-300 group-hover:translate-x-1" />
                   </>
                 )}
@@ -425,7 +446,6 @@ const BookDemo = ({ theme = 'dark' }) => {
           zIndex: 200,
           top: '80px',
           right: '20px'
-
          }}
       />
     </div>

@@ -1,0 +1,452 @@
+{
+  "nav": {
+    "resources": "Resources",
+    "integration": "Integration",
+    "documentation": "Documentation",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "english": "English",
+    "tamil": "Tamil",
+    "languageSelector": "Language Selector",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "languageChange": "Language Change"
+  },
+
+  "footer": {
+    "description": "Transform your business with our powerful WhatsApp API solution.",
+    "quickLinks": "Quick Links",
+    "aboutUs": "About Us",
+    "features": "Features",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "contact": "Contact",
+    "resources": "Resources",
+    "documentation": "Documentation",
+    "apiReference": "API Reference",
+    "tutorials": "Tutorials",
+    "caseStudies": "Case Studies",
+    "support": "Support",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Subscribe to our newsletter for updates and tips.",
+    "emailPlaceholder": "Enter your email",
+    "copyright": "All rights reserved."
+  },
+
+  "bookDemo": {
+    "header": {
+      "title": "Let's Talk!",
+      "subtitle": "Have a question or idea? Drop us a message and we'll get back to you!"
+    },
+    "contactInfo": {
+      "title": "Contact Information",
+      "phone": {
+        "number": "+91 85240 89733",
+        "label": "Call or WhatsApp"
+      },
+      "email": {
+        "address": "techvaseegrah@gmail.com",
+        "label": "Email Anytime"
+      },
+      "location": {
+        "address": "Thanjavur, Tamil Nadu",
+        "label": "Our HQ"
+      }
+    },
+    "form": {
+      "title": "Get in Touch",
+      "subtitle": "We're happy to hear from you.",
+      "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "companyName": "Company Name",
+        "email": "Email",
+        "phone": "Phone",
+        "date": "Date",
+        "hour": "Hour",
+        "minute": "Min",
+        "message": "Message"
+      },
+      "timePeriod": {
+        "am": "AM",
+        "pm": "PM"
+      },
+      "submitButton": {
+        "default": "Send Message",
+        "loading": "Sending..."
+      }
+    },
+    "toast": {
+      "success": "Your message has been sent successfully! Check your email for confirmation.",
+      "error": "Failed to send your message. Please try again later."
+    }
+  },
+
+  "Homepage": {
+    "hero": {
+      "title1": "Automate your",
+      "title2": "business with",
+      "title3": "WhatsApp API!",
+      "description": "Engage customers, streamline support, and boost sales with our powerful WhatsApp Business API integration platform.",
+      "bookDemo": "Book a demo",
+      "startFree": "Start for free"
+    },
+    
+    "logoShowcase": {
+      "title": "Trusted by 5000+ brands across 40+ countries"
+    },
+
+    "features": {
+      "header": {
+        "title": "Everything You Need to Automate WhatsApp",
+        "description": "Powerful tools to streamline your customer communications and boost engagement."
+      },
+      "items": {
+        "realTimeChat": {
+          "title": "Real-time Chat",
+          "description": "Engage with customers in real-time through WhatsApp with a unified inbox for your team."
+        },
+        "aiChatbot": {
+          "title": "AI Chatbot",
+          "description": "Our AI handles customer inquiries 24/7, learning from conversations to improve over time."
+        },
+        "templateMessaging": {
+          "title": "Template Messaging",
+          "description": "Create and send approved message templates at scale with personalization options."
+        },
+        "customerFlow": {
+          "title": "Customer Flow",
+          "description": "Design custom workflows to guide customers through personalized journeys based on their interactions and preferences."
+        },
+        "broadcastMessages": {
+          "title": "Broadcast Messages",
+          "description": "Send targeted announcements, promotions, and updates to specific customer segments."
+        },
+        "catalogSync": {
+          "title": "Catalog Sync",
+          "description": "Seamlessly integrate your product catalog with Shopify or WooCommerce."
+        }
+      }
+    },
+
+    "AIChatDemo": {
+      "hero": {
+        "title": "AI That Talks to Your Customers 24/7",
+        "subtitle": "Our intelligent chatbot understands customer needs and provides fast, accurate responses automatically."
+      },
+      "features": {
+        "naturalLanguage": {
+          "title": "Natural Language Understanding",
+          "description": "Our AI understands customer queries in natural language and responds contextually."
+        },
+        "selfImproving": {
+          "title": "Self-Improving",
+          "description": "The more conversations your AI agent has, the smarter it gets, continuously learning from interactions."
+        },
+        "seamlessHandoff": {
+          "title": "Seamless Handoff",
+          "description": "When a query requires human intervention, the AI smoothly transfers the conversation to your team."
+        },
+        "availability": {
+          "title": "24/7 Availability",
+          "description": "Never miss a customer inquiry with round-the-clock automated responses."
+        }
+      },
+      "chat": {
+        "title": "AI Support",
+        "placeholder": "Type a message...",
+        "messages": {
+          "greeting": "Hey! How can I help you today?",
+          "orderHelp": "I need help with my recent order",
+          "orderNumber": "Of course! Could you please provide your order number?",
+          "orderNumberReply": "#ORD-12345",
+          "orderDetails": "Thank you! I can see your order for the wireless headphones. What specific help do you need?",
+          "deliveryStatus": "I want to know the delivery status",
+          "deliveryInfo": "Your order is currently out for delivery and should arrive by 5 PM today. Would you like me to send you the tracking link?"
+        }
+      }
+    },
+
+    "TestimonialSection": {
+      "header": {
+        "title": "See why our customers are excited",
+        "subtitle": "Trusted by 5,000+ developers worldwide to elevate their apps with WhatsApp integration",
+        "highlightWord": "excited"
+      },
+      "button": {
+        "shareExperience": "Share Your Experience",
+        "backToReviews": "Back to Reviews",
+        "submitReview": "Submit Review"
+      },
+      "form": {
+        "labels": {
+          "name": "Your Name",
+          "company": "Company Name",
+          "rating": "Rating",
+          "review": "Your Review"
+        }
+      },
+      "testimonials": [
+        {
+          "quote": "Overall we are very happy with the reliability and general service. We use this to communicate with our customers and automate their requests over WhatsApp.",
+          "highlight": "we are very happy with the reliability",
+          "name": "Dan M.",
+          "company": "TechSolutions"
+        },
+        {
+          "quote": "Good and affordable alternative to official WhatsApp Business API. Uptime is good compared to similar services.",
+          "highlight": "affordable alternative to official WhatsApp Business API",
+          "name": "Ranjid E.",
+          "company": "GlobalConnect"
+        },
+        {
+          "quote": "Great tool to send marketing campaigns over WhatsApp, would recommend for anyone in need of a reliable WhatsApp API.",
+          "highlight": "Great tool to send marketing campaigns over WhatsApp",
+          "name": "Sarah W.",
+          "company": "DevSync"
+        },
+        {
+          "quote": "The integration was seamless and the documentation is top-notch. Our team was able to implement WhatsApp messaging features in record time.",
+          "highlight": "integration was seamless",
+          "name": "Leon T.",
+          "company": "BrightApps"
+        },
+        {
+          "quote": "Customer support is exceptional. Any issues we encountered were resolved quickly, and the team is always responsive.",
+          "highlight": "Customer support is exceptional",
+          "name": "Aisha K.",
+          "company": "SnapTech"
+        },
+        {
+          "quote": "The analytics dashboard provides valuable insights into our messaging campaigns. It's been crucial for optimizing our communication strategy.",
+          "highlight": "analytics dashboard",
+          "name": "James L.",
+          "company": "AppVibe"
+        }
+      ]
+    },
+
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about our WhatsApp API solution",
+      "questions": {
+        "official_api": {
+          "question": "Is this WhatsApp API official?",
+          "answer": "Yes, our solution is built on the official WhatsApp Business API. We're an authorized WhatsApp Business Solution Provider, ensuring you get a compliant and reliable service that follows all of Meta's guidelines and policies."
+        },
+        "ecommerce_integration": {
+          "question": "Can I integrate with my e-commerce store?",
+          "answer": "Absolutely! Our API seamlessly integrates with all major e-commerce platforms including Shopify, WooCommerce, Magento, and custom solutions. You can automate order updates, shipping notifications, and even create interactive shopping experiences directly in WhatsApp."
+        },
+        "free_trial": {
+          "question": "What's included in the free trial?",
+          "answer": "Our 14-day free trial includes full access to all API features, up to 1,000 messages, custom template creation, basic analytics, and dedicated support. You'll get everything you need to test the platform thoroughly before committing to a paid plan."
+        },
+        "data_security": {
+          "question": "How secure is customer data?",
+          "answer": "Security is our top priority. We implement end-to-end encryption, comply with GDPR and other global privacy regulations, and host on SOC 2 certified infrastructure. Your data and your customers' information are always protected with enterprise-grade security measures."
+        },
+        "team_access": {
+          "question": "Can multiple team members use the same account?",
+          "answer": "Yes, we support multi-user access with customizable roles and permissions. You can add team members, assign specific responsibilities, and track individual performance. Our collaborative features make it easy to manage customer communications as a team."
+        },
+        "technical_support": {
+          "question": "What kind of technical support do you provide?",
+          "answer": "We offer comprehensive technical support including 24/7 email support, dedicated account managers for enterprise plans, detailed documentation, API references, and implementation guides. Our technical team is always available to help you maximize the potential of our WhatsApp API."
+        }
+      },
+      "contact_support": "Have more questions? Contact our support team"
+    },
+
+    "cta": {
+      "badge": "New Features Available",
+      "title": "Ready to Automate Your",
+      "title_highlight": "WhatsApp Now?",
+      "subtitle": "Join thousands of businesses that are transforming customer engagement with our powerful WhatsApp API solution.",
+      "get_started": "Get Started Now",
+      "book_demo": "Book Demo",
+      "no_credit_card": "No credit card required • Set up in minutes"
+    }
+  },
+
+  "pricingpage": {
+    "hero": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Choose a plan that fits your business needs.",
+      "startTrial": "Start Free Trial",
+      "scheduleDemo": "Schedule a Demo"
+    },
+
+    "PricingSection": {
+      "title": "Find the Perfect Plan for Your Business",
+      "billingCycle": {
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "plans": {
+        "freeTrial": {
+          "title": "Free Trial",
+          "period": "90 days",
+          "description": "Perfect for testing our platform",
+          "features": [
+            "Unlimited message broadcasting",
+            "Website-wide interaction",
+            "F3 Engine support",
+            "Inventory management",
+            "90-day access"
+          ],
+          "ctaText": "Start Free Trial"
+        },
+        "basic": {
+          "title": "Basic Plan",
+          "period": {
+            "monthly": "month",
+            "yearly": "year"
+          },
+          "description": "Essential features for growing businesses",
+          "features": [
+            "Unlimited message broadcasting",
+            "Order automation",
+            "Appointment booking",
+            "Invoice printing",
+            "Order tracking",
+            "Hold and auto-correction system"
+          ],
+          "ctaText": "Get Started"
+        },
+        "custom": {
+          "title": "Custom Plan",
+          "period": "based on needs",
+          "description": "Tailored solutions for your business",
+          "features": [
+            "Tailored features",
+            "Full customization",
+            "Integration with existing tools",
+            "Priority support",
+            "Dedicated account manager",
+            "Custom API development"
+          ],
+          "ctaText": "Contact Sales"
+        }
+      }
+    },
+    
+    "FeatureComparison": {
+      "title": "Feature Comparison",
+      "tableHeaders": {
+        "feature": "Feature",
+        "freeTrial": "Free Trial",
+        "basicPlan": "Basic Plan",
+        "customPlan": "Custom Plan"
+      },
+      "features": {
+        "unlimitedBroadcast": "Unlimited Broadcast",
+        "websiteInteraction": "Website Interaction",
+        "f3Engine": "F3 Engine",
+        "inventoryManagement": "Inventory Management",
+        "orderAutomation": "Order Automation",
+        "appointmentBooking": "Appointment Booking",
+        "printingTracking": "Printing & Tracking",
+        "autoCorrection": "Auto Correction",
+        "customIntegrations": "Custom Integrations",
+        "prioritySupport": "Priority Support"
+      }
+    },
+
+    "addons": {
+      "title": "Add-ons & Pay-As-You-Go",
+      "subtitle": "Customize your plan with these additional services",
+      "items": {
+        "additionalMessages": {
+          "title": "Additional Messages",
+          "price": "₹0.10",
+          "description": "Per message after limit"
+        },
+        "extraUsers": {
+          "title": "Extra Users",
+          "price": "₹199",
+          "description": "Per user per month"
+        },
+        "bulkSms": {
+          "title": "Bulk SMS Add-on",
+          "price": "₹499",
+          "description": "Per month"
+        },
+        "dedicatedSupport": {
+          "title": "Dedicated Support",
+          "price": "₹999",
+          "description": "Per month"
+        }
+      },
+      "addToPlan": "Add to Plan"
+    },
+
+    "Enterprise": {
+      "title": "Enterprise Plan",
+      "description": "Need custom volume or advanced integrations? We'll tailor a plan for your business.",
+      "features": {
+        "apiSupport": {
+          "title": "Dedicated API Support",
+          "description": "Custom API development and integration support"
+        },
+        "uptime": {
+          "title": "SLA-backed Uptime",
+          "description": "Guaranteed 99.9% uptime with service credits"
+        },
+        "accountManager": {
+          "title": "Account Manager",
+          "description": "Dedicated point of contact for your business"
+        },
+        "integrations": {
+          "title": "Custom Integrations",
+          "description": "Integration with your existing business tools"
+        }
+      },
+      "contactCard": {
+        "title": "Interested in Enterprise?",
+        "description": "Get a custom quote tailored to your specific business requirements.",
+        "button": "Contact Sales"
+      }
+    },
+
+    "TrustBadges": {
+      "title": "Global Trust & Compliance",
+      "badges": {
+        "gdprCompliant": "GDPR Compliant",
+        "isoCertified": "ISO Certified",
+        "encryption": "End-to-End Encryption",
+        "uptime": "99.9% Uptime Guarantee",
+        "trustedBy": "Trusted by 10,000+ businesses",
+        "dataSafety": "Your data is safe with us"
+      }
+    },
+
+    "FAQ": {
+      "title": "Frequently Asked Questions",
+      "questions": {
+        "messageLimitExceed": {
+          "question": "What happens if I exceed my message limit?",
+          "answer": "You will be charged ₹0.10 per extra message or can upgrade to a higher plan."
+        },
+        "whatsappBusiness": {
+          "question": "Do I need a WhatsApp Business Account?",
+          "answer": "Yes, it's required for integration."
+        },
+        "cancelSwitch": {
+          "question": "Can I cancel or switch plans anytime?",
+          "answer": "Yes, plans are flexible and cancellable anytime."
+        },
+        "freeTrial": {
+          "question": "Is there a free trial?",
+          "answer": "Yes, 90 days of full access."
+        },
+        "discounts": {
+          "question": "Are there discounts for NGOs or students?",
+          "answer": "Yes, reach out to our sales team."
+        }
+      }
+    }
+
+  }
+  
+}

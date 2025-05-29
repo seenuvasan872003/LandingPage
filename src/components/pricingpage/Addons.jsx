@@ -2,35 +2,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Users, MessageSquare, HeadphonesIcon } from 'lucide-react';
-
-const addons = [
-  {
-    icon: <MessageCircle className="h-6 w-6 text-green-500" />,
-    title: 'Additional Messages',
-    price: '₹0.10',
-    description: 'Per message after limit'
-  },
-  {
-    icon: <Users className="h-6 w-6 text-green-500" />,
-    title: 'Extra Users',
-    price: '₹199',
-    description: 'Per user per month'
-  },
-  {
-    icon: <MessageSquare className="h-6 w-6 text-green-500" />,
-    title: 'Bulk SMS Add-on',
-    price: '₹499',
-    description: 'Per month'
-  },
-  {
-    icon: <HeadphonesIcon className="h-6 w-6 text-green-500" />,
-    title: 'Dedicated Support',
-    price: '₹999',
-    description: 'Per month'
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 const Addons = ({theme}) => {
+  const { t } = useTranslation();
+
+  const addons = [
+    {
+      icon: <MessageCircle className="h-6 w-6 text-green-500" />,
+      title: t('pricingpage.addons.items.additionalMessages.title'),
+      price: t('pricingpage.addons.items.additionalMessages.price'),
+      description: t('pricingpage.addons.items.additionalMessages.description')
+    },
+    {
+      icon: <Users className="h-6 w-6 text-green-500" />,
+      title: t('pricingpage.addons.items.extraUsers.title'),
+      price: t('pricingpage.addons.items.extraUsers.price'),
+      description: t('pricingpage.addons.items.extraUsers.description')
+    },
+    {
+      icon: <MessageSquare className="h-6 w-6 text-green-500" />,
+      title: t('pricingpage.addons.items.bulkSms.title'),
+      price: t('pricingpage.addons.items.bulkSms.price'),
+      description: t('pricingpage.addons.items.bulkSms.description')
+    },
+    {
+      icon: <HeadphonesIcon className="h-6 w-6 text-green-500" />,
+      title: t('pricingpage.addons.items.dedicatedSupport.title'),
+      price: t('pricingpage.addons.items.dedicatedSupport.price'),
+      description: t('pricingpage.addons.items.dedicatedSupport.description')
+    }
+  ];
+
   return (
     <motion.section 
       className="py-16 px-3"
@@ -47,7 +50,7 @@ const Addons = ({theme}) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Add-ons & Pay-As-You-Go
+          {t('pricingpage.addons.title')}
         </motion.h2>
         
         <motion.p 
@@ -57,7 +60,7 @@ const Addons = ({theme}) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Customize your plan with these additional services
+          {t('pricingpage.addons.subtitle')}
         </motion.p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -89,7 +92,7 @@ const Addons = ({theme}) => {
 
               <div className="p-4">
                 <button className="w-full py-2 border border-green-500 text-green-500 hover:bg-green-50 font-medium rounded-lg transition duration-300">
-                  Add to Plan
+                  {t('pricingpage.addons.addToPlan')}
                 </button>
               </div>
             </motion.div>

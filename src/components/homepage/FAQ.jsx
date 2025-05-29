@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { MessageSquare, ShoppingCart, Shield, HelpCircle, Zap, ChevronDown, Users, Settings } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const FAQ = ({ theme }) => {
+  const { t } = useTranslation();
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const handleMouseEnter = (index) => {
@@ -18,33 +20,33 @@ const FAQ = ({ theme }) => {
   const faqs = [
     {
       icon: <MessageSquare className={`w-6 h-6 ${theme === 'light' ? 'text-green-600' : 'text-green-500'}`} />,
-      question: "Is this WhatsApp API official?",
-      answer: "Yes, our solution is built on the official WhatsApp Business API. We're an authorized WhatsApp Business Solution Provider, ensuring you get a compliant and reliable service that follows all of Meta's guidelines and policies."
+      question: t('Homepage.faq.questions.official_api.question'),
+      answer: t('Homepage.faq.questions.official_api.answer')
     },
     {
       icon: <ShoppingCart className={`w-6 h-6 ${theme === 'light' ? 'text-green-600' : 'text-green-500'}`} />,
-      question: "Can I integrate with my e-commerce store?",
-      answer: "Absolutely! Our API seamlessly integrates with all major e-commerce platforms including Shopify, WooCommerce, Magento, and custom solutions. You can automate order updates, shipping notifications, and even create interactive shopping experiences directly in WhatsApp."
+      question: t('Homepage.faq.questions.ecommerce_integration.question'),
+      answer: t('Homepage.faq.questions.ecommerce_integration.answer')
     },
     {
       icon: <Zap className={`w-6 h-6 ${theme === 'light' ? 'text-green-600' : 'text-green-500'}`} />,
-      question: "What's included in the free trial?",
-      answer: "Our 14-day free trial includes full access to all API features, up to 1,000 messages, custom template creation, basic analytics, and dedicated support. You'll get everything you need to test the platform thoroughly before committing to a paid plan."
+      question: t('Homepage.faq.questions.free_trial.question'),
+      answer: t('Homepage.faq.questions.free_trial.answer')
     },
     {
       icon: <Shield className={`w-6 h-6 ${theme === 'light' ? 'text-green-600' : 'text-green-500'}`} />,
-      question: "How secure is customer data?",
-      answer: "Security is our top priority. We implement end-to-end encryption, comply with GDPR and other global privacy regulations, and host on SOC 2 certified infrastructure. Your data and your customers' information are always protected with enterprise-grade security measures."
+      question: t('Homepage.faq.questions.data_security.question'),
+      answer: t('Homepage.faq.questions.data_security.answer')
     },
     {
       icon: <Users className={`w-6 h-6 ${theme === 'light' ? 'text-green-600' : 'text-green-500'}`} />,
-      question: "Can multiple team members use the same account?",
-      answer: "Yes, we support multi-user access with customizable roles and permissions. You can add team members, assign specific responsibilities, and track individual performance. Our collaborative features make it easy to manage customer communications as a team."
+      question: t('Homepage.faq.questions.team_access.question'),
+      answer: t('Homepage.faq.questions.team_access.answer')
     },
     {
       icon: <Settings className={`w-6 h-6 ${theme === 'light' ? 'text-green-600' : 'text-green-500'}`} />,
-      question: "What kind of technical support do you provide?",
-      answer: "We offer comprehensive technical support including 24/7 email support, dedicated account managers for enterprise plans, detailed documentation, API references, and implementation guides. Our technical team is always available to help you maximize the potential of our WhatsApp API."
+      question: t('Homepage.faq.questions.technical_support.question'),
+      answer: t('Homepage.faq.questions.technical_support.answer')
     }
   ];
 
@@ -59,10 +61,10 @@ const FAQ = ({ theme }) => {
           className="text-center mb-16"
         >
           <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
-            Frequently Asked Questions
+            {t('Homepage.faq.title')}
           </h2>
           <p className={`text-lg max-w-2xl mx-auto ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
-            Everything you need to know about our WhatsApp API solution
+            {t('Homepage.faq.subtitle')}
           </p>
         </motion.div>
 
@@ -70,7 +72,7 @@ const FAQ = ({ theme }) => {
           {faqs.map((faq, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, x: index < 3 ? -50 : 50 }}
+              initial={{ opacity: 0, x: index < 3 ? -50 : -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -145,7 +147,7 @@ const FAQ = ({ theme }) => {
             }`}
           >
             <HelpCircle className="w-5 h-5" />
-            Have more questions? Contact our support team
+            {t('Homepage.faq.contact_support')}
           </Link>
         </motion.div>
       </div>

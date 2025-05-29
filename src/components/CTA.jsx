@@ -3,8 +3,11 @@ import React from 'react';
 import { ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const CTA = ({ theme }) => {
+  const { t } = useTranslation();
+
   return (
     <section className={`py-20 relative overflow-hidden ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
       <div className={`absolute inset-0 ${theme === 'light' 
@@ -27,14 +30,14 @@ const CTA = ({ theme }) => {
               } mb-6`}>
                 <Sparkles className={theme === 'light' ? 'w-4 h-4 text-green-600' : 'w-4 h-4 text-green-500'} />
                 <span className={`text-sm font-medium ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
-                  New Features Available
+                  {t('Homepage.cta.badge')}
                 </span>
               </motion.div>
               
               <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
-                Ready to Automate Your{' '}
+                {t('Homepage.cta.title')}{' '}
                 <span className={theme === 'light' ? 'text-green-600' : 'text-green-500'}>
-                  WhatsApp Now?
+                  {t('Homepage.cta.title_highlight')}
                 </span>
               </h2>
               
@@ -45,7 +48,7 @@ const CTA = ({ theme }) => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className={`text-xl mb-8 leading-relaxed ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}
               >
-                Join thousands of businesses that are transforming customer engagement with our powerful WhatsApp API solution.
+                {t('Homepage.cta.subtitle')}
               </motion.p>
               
               <motion.div 
@@ -65,7 +68,7 @@ const CTA = ({ theme }) => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <span className="relative z-10">Get Started Now</span>
+                  <span className="relative z-10">{t('Homepage.cta.get_started')}</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1 relative z-10" />
                 </motion.a>
                 
@@ -79,7 +82,7 @@ const CTA = ({ theme }) => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <Link to="/book-demo" className="relative z-10">Book Demo</Link>
+                  <Link to="/book-demo" className="relative z-10">{t('Homepage.cta.book_demo')}</Link>
                 </motion.div>
               </motion.div>
               
@@ -90,7 +93,7 @@ const CTA = ({ theme }) => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className={theme === 'light' ? 'mt-6 text-gray-500 font-medium' : 'mt-6 text-gray-500 font-medium'}
               >
-                No credit card required • Set up in minutes
+                {t('Homepage.cta.no_credit_card')}
               </motion.p>
             </motion.div>
             

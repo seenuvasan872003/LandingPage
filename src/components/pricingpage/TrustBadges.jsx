@@ -2,32 +2,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, CheckCircle, Lock, Wifi, Users, Database } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const TrustBadges = ({ theme = 'light' }) => {
+  const { t } = useTranslation();
+
   const badges = [
     {
       icon: <Shield className="h-8 w-8 text-green-500" />,
-      title: 'GDPR Compliant'
+      title: t('pricingpage.TrustBadges.badges.gdprCompliant')
     },
     {
       icon: <CheckCircle className="h-8 w-8 text-green-500" />,
-      title: 'ISO Certified'
+      title: t('pricingpage.TrustBadges.badges.isoCertified')
     },
     {
       icon: <Lock className="h-8 w-8 text-green-500" />,
-      title: 'End-to-End Encryption'
+      title: t('pricingpage.TrustBadges.badges.encryption')
     },
     {
       icon: <Wifi className="h-8 w-8 text-green-500" />,
-      title: '99.9% Uptime Guarantee'
+      title: t('pricingpage.TrustBadges.badges.uptime')
     },
     {
       icon: <Users className="h-8 w-8 text-green-500" />,
-      title: 'Trusted by 10,000+ businesses'
+      title: t('pricingpage.TrustBadges.badges.trustedBy')
     },
     {
       icon: <Database className="h-8 w-8 text-green-500" />,
-      title: 'Your data is safe with us'
+      title: t('pricingpage.TrustBadges.badges.dataSafety')
     }
   ];
 
@@ -58,7 +61,7 @@ const TrustBadges = ({ theme = 'light' }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Global Trust & Compliance
+          {t('pricingpage.TrustBadges.title')}
         </motion.h2>
         
         <motion.div 
