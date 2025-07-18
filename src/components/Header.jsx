@@ -13,6 +13,7 @@ export default function Header({ theme, setTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isLegalMenuOpen, setIsLegalMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
 
   useEffect(() => {
@@ -30,8 +31,13 @@ export default function Header({ theme, setTheme }) {
     { name: t('nav.resources'), path: '/resources' },
     { name: t('nav.integration'), path: '/integration' },
     { name: t('nav.documentation'), path: '/documentation' },
-    { name: t('nav.blog'), path: '/blog' },
     { name: t('nav.pricing'), path: '/price' },
+  ];
+
+  const legalItems = [
+    { name: t('nav.privacy'), path: '/privacy' },
+    { name: t('nav.terms'), path: '/terms' },
+    { name: t('nav.faq'), path: '/faq' },
   ];
 
   const languages = [
@@ -109,9 +115,52 @@ export default function Header({ theme, setTheme }) {
                   </div>
                 </motion.div>
               ))}
+              
+              {/* Legal Pages Dropdown - Desktop */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsLegalMenuOpen(!isLegalMenuOpen)}
+                  className={`flex items-center space-x-1 text-sm font-medium transition-colors hover:text-[#25D366] ${
+                    legalItems.some(item => location.pathname === item.path) ? 'text-[#25D366]' : 
+                    theme === 'light' ? 'text-black' : 'text-white'
+                  }`}
+                >
+                  <span>Legal</span>
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+
+                <AnimatePresence>
+                  {isLegalMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className={`absolute right-0 top-full mt-2 w-48 rounded-md shadow-lg ${
+                        theme === 'light' ? 'bg-white border border-gray-200' : 'bg-gray-800 border border-gray-700'
+                      } z-50`}
+                    >
+                      {legalItems.map((item) => (
+                        <button
+                          key={item.name}
+                          onClick={() => {
+                            navigate(item.path);
+                            setIsLegalMenuOpen(false);
+                          }}
+                          className={`w-full text-left px-4 py-2 text-sm transition-colors hover:text-[#25D366] ${
+                            location.pathname === item.path ? 'text-[#25D366]' : 
+                            theme === 'light' ? 'text-black hover:bg-gray-50' : 'text-white hover:bg-gray-700'
+                          }`}
+                        >
+                          {item.name}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
-            {/* Right Side Menu Items (Theme Toggle & Language) */}
+            {/* Right Side Menu Items */}
             <div className="flex items-center space-x-4">
               {/* Mobile Menu Button */}
               <motion.button
@@ -121,6 +170,7 @@ export default function Header({ theme, setTheme }) {
               >
                 {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </motion.button>
+
 
               {/* Theme Toggle - Desktop */}
               <div className="hidden md:block">
@@ -134,10 +184,8 @@ export default function Header({ theme, setTheme }) {
                   className={`flex items-center space-x-1 ${theme === 'light' ? 'text-black' : 'text-white'} hover:text-[#25D366] cursor-pointer transition-colors`}
                 >
                   <Globe className="h-5 w-5" />
-                  {/* <ChevronDown className="h-4 w-4" /> */}
                 </button>
 
-                {/* Language Dropdown Menu */}
                 <AnimatePresence>
                   {isLanguageMenuOpen && (
                     <motion.div
@@ -199,6 +247,49 @@ export default function Header({ theme, setTheme }) {
                   </button>
                 ))}
                 
+                {/* Legal Pages in Mobile Menu */}
+                <div className="py-2">
+                  <div className="flex items-center justify-between">
+                    <span className={`text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+                      Legal
+                    </span>
+                    <button
+                      onClick={() => setIsLegalMenuOpen(!isLegalMenuOpen)}
+                      className={`${theme === 'light' ? 'text-black' : 'text-white'} hover:text-[#25D366] cursor-pointer transition-colors`}
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                    </button>
+                  </div>
+                  
+                  <AnimatePresence>
+                    {isLegalMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="mt-2 ml-4 space-y-2"
+                      >
+                        {legalItems.map((item) => (
+                          <button
+                            key={item.name}
+                            onClick={() => {
+                              navigate(item.path);
+                              setIsLegalMenuOpen(false);
+                              setIsMobileMenuOpen(false);
+                            }}
+                            className={`block text-left text-sm w-full transition-colors hover:text-[#25D366] ${
+                              location.pathname === item.path ? 'text-[#25D366]' : 
+                              theme === 'light' ? 'text-black' : 'text-white'
+                            }`}
+                          >
+                            {item.name}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+                
                 {/* Theme Toggle in Mobile Menu */}
                 <div className="flex items-center justify-between py-2">
                   <span className={`text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}>
@@ -221,7 +312,6 @@ export default function Header({ theme, setTheme }) {
                     </button>
                   </div>
                   
-                  {/* Mobile Language Dropdown */}
                   <AnimatePresence>
                     {isLanguageMenuOpen && (
                       <motion.div
@@ -255,11 +345,14 @@ export default function Header({ theme, setTheme }) {
         )}
       </AnimatePresence>
 
-      {/* Click outside to close language menu */}
-      {isLanguageMenuOpen && (
+      {/* Click outside to close menus */}
+      {(isLanguageMenuOpen || isLegalMenuOpen) && (
         <div
           className="fixed inset-0 z-30"
-          onClick={() => setIsLanguageMenuOpen(false)}
+          onClick={() => {
+            setIsLanguageMenuOpen(false);
+            setIsLegalMenuOpen(false);
+          }}
         />
       )}
     </>

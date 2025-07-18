@@ -6,6 +6,9 @@ import Homepage from './pages/Homepage.jsx';
 import Footer from './components/Footer.jsx';
 import BookDemo from './components/Bookdemo.jsx';
 import Pricingpage from './pages/Pricingpage.jsx';
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
+import TermsConditions from './pages/TermsConditions.jsx';
+import FAQ from './pages/FAQ.jsx';
 
 
 function App() {
@@ -39,6 +42,9 @@ function App() {
             <Route path="/" element={<Homepage theme={theme} setTheme={setTheme}  />} />
             <Route path="/book-demo" element={<BookDemo theme={theme} setTheme={setTheme}  />} />
             <Route path="/price" element={<Pricingpage theme={theme} setTheme={setTheme} />}/>
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsConditions />} />
+            <Route path="/faq" element={<FAQ />} />
             {/* <Route path="/contact" element={<Contact />} />
             <Route path="/integration" element={<Integration />} />
             <Route path="/resources" element={<Resources />} />
