@@ -66,7 +66,7 @@ export default function PrivacyPolicy({ theme }) {
   ];
 
   return (
-    <div className={`min-h-screen pt-24 pb-16 ${theme === 'light' ? 'bg-gray-50' : 'bg-gray-900'}`}>
+    <div className={`min-h-screen pt-24 pb-16 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

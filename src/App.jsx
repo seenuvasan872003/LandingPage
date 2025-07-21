@@ -42,9 +42,9 @@ function App() {
             <Route path="/" element={<Homepage theme={theme} setTheme={setTheme}  />} />
             <Route path="/book-demo" element={<BookDemo theme={theme} setTheme={setTheme}  />} />
             <Route path="/price" element={<Pricingpage theme={theme} setTheme={setTheme} />}/>
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<TermsConditions />} />
-            <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacy" element={<PrivacyPolicy theme={theme} setTheme={setTheme} />} />
+            <Route path="/terms" element={<TermsConditions theme={theme} setTheme={setTheme} />} />
+            <Route path="/faq" element={<FAQ theme={theme} setTheme={setTheme} />} />
             {/* <Route path="/contact" element={<Contact />} />
             <Route path="/integration" element={<Integration />} />
             <Route path="/resources" element={<Resources />} />

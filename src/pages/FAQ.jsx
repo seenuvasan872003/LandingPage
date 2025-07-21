@@ -127,7 +127,7 @@ export default function FAQ({ theme }) {
   ];
 
   return (
-    <div className={`min-h-screen pt-24 pb-16 ${theme === 'light' ? 'bg-gray-50' : 'bg-black'}`}>
+    <div className={`min-h-screen pt-24 pb-16 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -143,10 +143,10 @@ export default function FAQ({ theme }) {
             >
               <HelpCircle className="h-8 w-8 text-white" />
             </motion.div>
-            <h1 className={`text-4xl font-bold mb-4 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+            <h1 className={`text-4xl font-bold mb-4 ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
               Frequently Asked Questions
             </h1>
-            <p className={`text-lg ${theme === 'light' ? 'text-black' : 'text-gray-300'}`}>
+            <p className={`text-lg ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
               Find answers to common questions about GoWhats and our WhatsApp Business integration services.
             </p>
           </div>
@@ -159,7 +159,7 @@ export default function FAQ({ theme }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: categoryIndex * 0.1 }}
-                className={`${theme === 'light' ? 'bg-white' : 'bg-black'} rounded-lg shadow-lg overflow-hidden`}
+                className={`${theme === 'light' ? 'bg-white' : 'bg-gray-800'} rounded-lg shadow-lg overflow-hidden`}
               >
                 {/* Category Header */}
                 <div className="bg-[#25D366] px-6 py-4">
@@ -174,7 +174,7 @@ export default function FAQ({ theme }) {
                 </div>
 
                 {/* Questions */}
-                <div className="divide-y divide-gray-200 dark:divide-gray-900">
+                <div className="divide-y divide-gray-200 dark:divide-gray-700">
                   {category.questions.map((item, itemIndex) => {
                     const globalIndex = `${categoryIndex}-${itemIndex}`;
                     const isOpen = openItems[globalIndex];
@@ -183,7 +183,7 @@ export default function FAQ({ theme }) {
                       <div key={itemIndex}>
                         <button
                           onClick={() => toggleItem(globalIndex)}
-                          className={`w-full text-left px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors ${
+                          className={`w-full text-left px-6 py-4 hover:bg-gray-600 dark:hover:bg-gray-700 transition-colors ${
                             theme === 'light' ? 'text-gray-900' : 'text-white'
                           }`}
                         >
@@ -212,7 +212,7 @@ export default function FAQ({ theme }) {
                             >
                               <div className="px-6 pb-4">
                                 <p className={`text-lg leading-relaxed ${
-                                  theme === 'light' ? 'text-black' : 'text-gray-300'
+                                  theme === 'light' ? 'text-gray-700' : 'text-gray-300'
                                 }`}>
                                   {item.answer}
                                 </p>
@@ -239,13 +239,13 @@ export default function FAQ({ theme }) {
             <h3 className={`text-2xl font-semibold mb-4 ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
               Still have questions?
             </h3>
-            <p className={`text-lg mb-6 ${theme === 'light' ? 'text-gray-900' : 'text-gray-300'}`}>
+            <p className={`text-lg mb-6 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
               Our support team is here to help you get the most out of GoWhats.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:support@gowhats.com"
-                className="inline-flex items-center px-6 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#22c55e] transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-[#25D366] text-white rounded-lg hover:bg-transparent hover:border hover:border-white transition-colors"
               >
                 Email Support
               </a>
@@ -254,7 +254,7 @@ export default function FAQ({ theme }) {
                 className={`inline-flex items-center px-6 py-3 rounded-lg border transition-colors ${
                   theme === 'light' 
                     ? 'border-gray-300 text-gray-700 hover:bg-gray-50' 
-                    : 'border-gray-600 text-gray-300 hover:bg-gray-700'
+                    : 'border-white text-white hover:bg-[#25D366] hover:border-none'
                 }`}
               >
                 Book a Demo
