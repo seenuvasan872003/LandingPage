@@ -17,22 +17,43 @@
   },
 
   "footer": {
-    "description": "Transform your business with our powerful WhatsApp API solution.",
-    "quickLinks": "Quick Links",
-    "aboutUs": "About Us",
-    "features": "Features",
-    "pricing": "Pricing",
-    "blog": "Blog",
-    "contact": "Contact",
-    "resources": "Resources",
-    "documentation": "Documentation",
-    "apiReference": "API Reference",
-    "tutorials": "Tutorials",
-    "caseStudies": "Case Studies",
-    "support": "Support",
-    "newsletter": "Newsletter",
-    "newsletterDescription": "Subscribe to our newsletter for updates and tips.",
-    "emailPlaceholder": "Enter your email",
+    "description": "Transform your business communication with WhatsApp Business API integration. Connect with customers instantly and grow your business.",
+    "contact": {
+      "email": "techvaseegrah@gmail.com",
+      "phone": "+91 85240 89733",
+      "address": "9, Vijaya Nagar, Reddypalayam Road Thanjavur-613009"
+    },
+    "sections": {
+      "product": "Product",
+      "company": "Company", 
+      "resources": "Resources",
+      "legal": "Legal"
+    },
+    "links": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "apiDocs": "API Documentation",
+      "integrations": "Integrations",
+      "aboutUs": "About Us",
+      "careers": "Careers",
+      "press": "Press",
+      "contact": "Contact",
+      "helpCenter": "Help Center",
+      "blog": "Blog",
+      "webinars": "Webinars",
+      "caseStudies": "Case Studies",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy",
+      "gdpr": "GDPR"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get the latest updates and insights delivered to your inbox",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe",
+      "emailLabel": "Email Address"
+    },
     "copyright": "All rights reserved."
   },
 
