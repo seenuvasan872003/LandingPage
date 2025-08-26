@@ -1,5 +1,5 @@
 import SlantedDiv from './SlantedDiv';
-import dashbordimg from '../../assets/dashbordimg.png';
+import dashbordimg from '../../assets/dash.PNG';
 
 const Imagesection = ({ theme}) => {
   return (
@@ -12,7 +12,7 @@ const Imagesection = ({ theme}) => {
         <img 
             src={dashbordimg}
             alt="Dashboard"
-            className="rounded"
+            className="rounded mx-auto"
         />   
     </SlantedDiv>
   )

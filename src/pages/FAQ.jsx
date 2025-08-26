@@ -298,10 +298,10 @@ export default function FAQ({ theme }) {
                   Get detailed help via email
                 </p>
                 <a 
-                  href="mailto:support@gowhats.com"
+                  href="mailto:techvaseegrah@gmail.com"
                   className="text-[#25D366] hover:underline font-medium"
                 >
-                  support@gowhats.com
+                  techvaseegrah@gmail.com
                 </a>
               </div>
               
@@ -314,10 +314,10 @@ export default function FAQ({ theme }) {
                   Speak directly with our team
                 </p>
                 <a 
-                  href="tel:+15551234567"
+                  href="tel:+91 85240 89733"
                   className="text-[#25D366] hover:underline font-medium"
                 >
-                  +1 (555) 123-4567
+                  +91 85240 89733
                 </a>
               </div>
               
@@ -329,9 +329,14 @@ export default function FAQ({ theme }) {
                 <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} mb-3`}>
                   Instant help when you need it
                 </p>
-                <button className="text-[#25D366] hover:underline font-medium">
+                <a 
+                  href="https://wa.me/918524089733" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#25D366] hover:underline font-medium"
+                >
                   Start Chat
-                </button>
+                </a>
               </div>
             </div>
             

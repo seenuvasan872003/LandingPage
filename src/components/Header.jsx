@@ -136,7 +136,7 @@ export default function Header({ theme, setTheme }) {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       className={`absolute right-0 top-full mt-2 w-48 rounded-md shadow-lg ${
-                        theme === 'light' ? 'bg-white border border-gray-200' : 'bg-gray-800 border border-gray-700'
+                        theme === 'light' ? 'bg-white border border-gray-200' : 'bg-black border border-gray-900'
                       } z-50`}
                     >
                       {legalItems.map((item) => (
@@ -148,7 +148,7 @@ export default function Header({ theme, setTheme }) {
                           }}
                           className={`w-full text-left px-4 py-2 text-sm transition-colors hover:text-[#25D366] ${
                             location.pathname === item.path ? 'text-[#25D366]' : 
-                            theme === 'light' ? 'text-black hover:bg-gray-50' : 'text-white hover:bg-gray-700'
+                            theme === 'light' ? 'text-black hover:bg-gray-50' : 'text-white hover:bg-gray-900'
                           }`}
                         >
                           {item.name}

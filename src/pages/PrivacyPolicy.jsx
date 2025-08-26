@@ -7,11 +7,11 @@ export default function PrivacyPolicy({ theme }) {
   return (
     <div className={`min-h-screen pt-24 pb-16 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
           {/* Header */}
           <div className="text-center mb-16">
             <motion.div
@@ -422,7 +422,7 @@ export default function PrivacyPolicy({ theme }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="text-center"
+            className="text-center md:text-left"
           >
             <h2 className={`text-3xl font-bold mb-6 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
               Contact Our Privacy Team
@@ -430,7 +430,7 @@ export default function PrivacyPolicy({ theme }) {
             <p className={`text-lg leading-relaxed mb-8 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
               If you have questions about this Privacy Policy, want to exercise your privacy rights, or need to report a privacy concern, please contact our dedicated privacy team:
             </p>
-            <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 max-w-3xl md:max-w-none">
               <div className="flex flex-col items-center">
                 <Mail className="h-8 w-8 text-[#25D366] mb-3" />
                 <h3 className={`text-lg font-semibold mb-2 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
@@ -455,13 +455,13 @@ export default function PrivacyPolicy({ theme }) {
                   Address
                 </h3>
                 <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-400'} text-center`}>
-                  9, Vijaya Nagar, Reddypalayam Road
-                  Thanjavur-613009
+                  9, Vijaya Nagar, Reddypalayam Road <br/> Thanjavur-613009
                 </p>
               </div>
             </div>
           </motion.div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
