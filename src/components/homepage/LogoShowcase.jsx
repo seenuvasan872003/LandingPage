@@ -1,5 +1,7 @@
 import React from 'react';
-import { Star, BarChart2, Activity, Zap, Image, Compass, Map, PieChart, Heart, Cpu, Database, Cloud, Globe, Shield } from 'lucide-react';
+import { Star, BarChart2, Activity, Zap, Image, Compass, Map, PieChart, Heart, Cpu, Database, Cloud, Globe, Shield, } from 'lucide-react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMeta } from "@fortawesome/free-brands-svg-icons";
 import { useTranslation } from 'react-i18next';
 
 const LogoShowcase = ({ theme }) => {
@@ -21,13 +23,13 @@ const LogoShowcase = ({ theme }) => {
   // Meta and Rating section
   const TopSection = () => (
     <div className="flex justify-center items-center gap-8 mb-16">
-      <div className="flex items-center gap-2">
-        <div className="text-green-400">
-          <Activity size={24} className="stroke-[3]" />
+      <div className=" text-center">
+        <div className="text-[#0366e0] flex gap-2">
+          <FontAwesomeIcon icon={faMeta} fontSize={40} />
+          <h1 className={`font-bold text-2xl ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>Meta</h1>
         </div>
-        <div className={`font-bold ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>
-          Meta Business<br />
-          <span className={`font-normal ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>Partners</span>
+        <div>
+          <span className={`font-normal ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>Tech Provider</span>
         </div>
       </div>
 
