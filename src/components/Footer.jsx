@@ -210,11 +210,11 @@ export default function Footer({ theme }) {
             <p className={`mb-4 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
               {t('footer.newsletter.description')}
             </p>
-            <div className="flex gap-2">
+            <div className="lg:flex lg:gap-2">
               <input
                 type="email"
                 placeholder={t('footer.newsletter.placeholder')}
-                className={`flex-1 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#25D366] ${
+                className={`lg:flex-1 max-[1024px]:w-full max-[1024px]:mb-3 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#25D366] ${
                   theme === 'light' 
                     ? 'bg-white border-gray-300 text-black' 
                     : 'bg-gray-800 border-gray-700 text-white'
@@ -224,7 +224,7 @@ export default function Footer({ theme }) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#25D366] text-white px-6 py-2 rounded-lg hover:bg-[#22c55e] transition-colors"
+                className="bg-[#25D366] max-[1024px]:w-full text-white px-6 py-2 rounded-lg hover:bg-[#22c55e] transition-colors"
               >
                 {t('footer.newsletter.subscribe')}
               </motion.button>
