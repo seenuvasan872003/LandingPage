@@ -180,7 +180,7 @@ const AnimationContainer = ({ theme }) => {
   }, []);
 
   return (
-    <div className={`relative h-full w-full flex items-center justify-center overflow-hidden ${theme === 'light' ? 'bg-gray-50' : 'bg-black'}`}>
+    <div className={`relative p-5 h-full w-full flex items-center justify-center overflow-hidden ${theme === 'light' ? 'bg-gray-50' : 'bg-black'}`}>
       <div className={`relative ${isLandscape ? 'w-[640px] h-[320px]' : 'w-[320px] h-[640px]'} bg-black rounded-[2.5rem] shadow-2xl border-7 ${theme === 'light' ? 'border-black/90' : 'border-white/90'} transition-all duration-300`}>
         {/* Front camera and sensors */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[120px] h-[35px] bg-black rounded-b-3xl flex items-center justify-center gap-2 z-10">

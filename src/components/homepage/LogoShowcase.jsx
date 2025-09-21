@@ -22,7 +22,7 @@ const LogoShowcase = ({ theme = "light" }) => {
   ];
 
   const TopSection = () => (
-    <div className="flex justify-center items-center gap-8 mb-16">
+    <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-16">
       <div className="text-center">
         <div className="text-[#0366e0] flex gap-2 justify-center items-center">
           <FontAwesomeIcon icon={faMeta} fontSize={40} />
@@ -59,7 +59,7 @@ const LogoShowcase = ({ theme = "light" }) => {
         /* marquee container - add horizontal padding so it isn't full-width */
         .lv-marquee {
           overflow: hidden;
-          padding: 0 6rem;
+          // padding: 0 6rem;
 
         }
 
@@ -75,7 +75,7 @@ const LogoShowcase = ({ theme = "light" }) => {
         }
         .lv-item img {
           height: 70px; 
-          width: 150px;
+          width: 170px;
           display: block;
         }
 
@@ -92,18 +92,18 @@ const LogoShowcase = ({ theme = "light" }) => {
 
         @keyframes lv-scroll {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-90%); }
         }
       `}</style>
 
       {/* Marquee area */}
-      <div className="lv-marquee pr-20 pl-20 mx-32">
+      <div className="lv-marquee px-1.5 mx-5 md:px-20 md:mx-32">
         {/* Duplicate logos sequence by concatenating the array to itself */}
         <div className="lv-animated" aria-hidden="false">
           <div className="lv-track">
             {logos.concat(logos).map((src, idx) => (
               <div className="lv-item" key={idx}>
-                <img src={src} alt={`logo-${idx}`} />
+                <img src={src} alt={`logo-${idx}`} className="md:h-[70px] md:w-[170px] " />
               </div>
             ))}
           </div>
